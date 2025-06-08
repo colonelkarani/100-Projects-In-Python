@@ -1,57 +1,8 @@
-
-what is the best geme in the world
-hello java,"Here's a simple ""Hello, Java!"" program explained step by step:
-
-```java
-public class HelloJava {
-    public static void main(String[] args) {
-        System.out.println(""Hello, Java!"");
-    }
-}
-```
-
-**Explanation:**
-1. `public class HelloJava`: Defines a public class named `HelloJava` (filename must be `HelloJava.java`)
-2. `public static void main(String[] args)`: Entry point where Java starts execution
-3. `System.out.println`: Prints the text to standard output
-4. `""Hello, Java!""`: The string literal to be printed
-
-**To run:**
-1. Save as `HelloJava.java`
-2. Compile: `javac HelloJava.java` (creates `HelloJava.class`)
-3. Execute: `java HelloJava`
-
-**Output:**
-```
-Hello, Java!
-```
-
-**Key concepts:**
-- Java is case-sensitive
-- Every application requires a `main` method
-- Statements end with semicolons (`;`)
-- Code blocks use curly braces (`{}`)
-- `System.out.println` adds a newline after printing
-
-Let me know if you'd like to explore any Java concepts further!"
-tango tango 1 2 1 2,"The given phrase ""tango tango 1 2 1 2"" can be analyzed as follows:
-
-1. **Word Analysis**:
-   - The word **""tango""** appears **twice** (repeated consecutively).
-
-2. **Number Sequence**:
-   - The numbers **""1""** and **""2""** each appear **twice**, forming an alternating pattern: **1, 2, 1, 2**.
-
-**Final Breakdown**:
-```
-tango: 2 occurrences  
-1: 2 occurrences  
-2: 2 occurrences  
-```
-
-**Pattern Insight**:  
-The sequence alternates between two distinct elements:  
-- A dual repetition of ""tango"" (mirroring a dance rhythm).  
-- A looping numeric pattern ""1, 2"" repeated twice (suggesting a cyclical count).
-
-This could represent a rhythmic structure (e.g., dance steps paired with beats)."
+['Baringo: Grade 7 girl abducted by armed suspects while cooking for younger siblings'],Child snatched while cooking: Armed men abduct Grade 7 girl caring for siblings in Baringo
+['Nyamira: Several people feared dead as PSV matatu crashes at Keroka'],"Deadly Matatu Crash in Keroka, Nyamira: Multiple Fatalities Feared"
+"['High Court ruling on child naming splits opinion among Kenyans: ""Rule on removal of deadbeat dads""']",High Court ruling on child naming and deadbeat dad removal divides Kenyans
+"['Mothers must consult partners when naming children, court declares']",Court Rules: Mums Must Get Partner's Input on Baby Names
+['Albert Ojwang: Grieving father painfully recounts how son was arrested for abusing senior cop'],Albert Ojwang's Agonizing Ordeal: Son Arrested for Assaulting Senior Cop He Reveals
+['Nairobi: Man kills ex-lover at her workplace despite court restraining order'],"Nairobi Horror: Man Murders Ex-Lover at Workplace, Defying Court Restraining Order"
+['Nairobi: Police officer among 3 arrested for vandalising KPLC equipment along Mombasa Road'],Shocker in Nairobi: Cop Among Trio Nabbed Vandalizing Kenya Power Equipment on Mombasa Road
+"[""Albert Ojwang: Police explain circumstances leading to X influencer's mysterious death after arrest""]",Police Reveal Details Around X Influencer Albert Ojwang's Mysterious Custody Death

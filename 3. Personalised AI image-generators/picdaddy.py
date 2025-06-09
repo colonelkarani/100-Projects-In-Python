@@ -44,6 +44,7 @@ def craiyon():
     respo = requests.get(image_link)
     with open(image_name+".png", "wb") as f :
         f.write(respo.content)
+    driver.quit()
 
 def deepai():
     driver = webdriver.Chrome()
@@ -60,6 +61,7 @@ def deepai():
     respo = requests.get(image_link)
     with open(image_name+".png", "wb") as f :
         f.write(respo.content)
+    driver.quit()
 
 if model == 1:
     craiyon()
@@ -67,5 +69,3 @@ elif model ==2:
     deepai()
 
 
-
-driver.quit()

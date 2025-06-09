@@ -82,7 +82,12 @@ def pic_prompt(prompt):
 api_key = os.getenv('API_KEY')
 
 
+# with open("news.csv", "r", newline="") as f:
+#     reader = csv.reader(f)
+#     for row in reader:
+#         ask(str(row))
+
 with open("processed.csv", "r", newline="") as f:
     reader = csv.reader(f)
     for row in reader:
-        pic_prompt(str(row))
+        pic_prompt(str(row)) 

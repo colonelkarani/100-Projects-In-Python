@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import csv
+import os
 
 options = Options()
 options.add_argument("--headless")
@@ -16,7 +17,6 @@ news = wait.until(EC.presence_of_all_elements_located(
 ))
 
 data = [[item.text] for item in news]
-
 filename = 'news.csv'
 index= 0
 while index < len(data):

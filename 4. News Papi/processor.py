@@ -19,7 +19,7 @@ def ask(prompt):
       "messages": [
        {
           "role": "user",
-         "content": "Rewrite this headline to make it more engaging(output only the headline as plain text, nothing else please!!!!):"+prompt
+         "content": "Rewrite this headline to make it more engaging(output only the headline as plain text, nothing else please!!!!)(if you put anything else my program will crash and please no recommendations just the renovated headlines in plain text)(this is the headline):"+prompt
         }
       ],
       
@@ -54,7 +54,7 @@ def pic_prompt(prompt):
       "messages": [
        {
           "role": "user",
-         "content": "Think like an expert,Describe an image that would visually represent this news(Output only the description, nothing else please, Treat every prompt as separate and please dont output anything else other than the prompt in plain text):"+prompt
+         "content": "Think like an expert,Describe an image that would visually represent this news. My ai model does not render text well so do not include image descriptions of text. This is also a kenyan website so try to include a kenyan context not so much but slightly. Make the users to be able to connect with the image(Output only the description, nothing else please, Treat every prompt as separate and please dont output anything else other than the prompt in plain text):"+prompt
         }
       ],
       
@@ -81,13 +81,19 @@ def pic_prompt(prompt):
 # Access the environment variables
 api_key = os.getenv('API_KEY')
 
+def ask_p():
+  os.remove("processed.csv")
+  with open("news.csv", "r", newline="") as f:
+      reader = csv.reader(f)
+      for row in reader:
+          ask(str(row))
 
-with open("news.csv", "r", newline="") as f:
-    reader = csv.reader(f)
-    for row in reader:
-        ask(str(row))
+def pic_prompt_p():
+  os.remove("prompts.csv")
+  with open("processed.csv", "r", newline="") as f:
+      reader = csv.reader(f)
+      for row in reader:
+          pic_prompt(str(row)) 
 
-# with open("processed.csv", "r", newline="") as f:
-#     reader = csv.reader(f)
-#     for row in reader:
-#         pic_prompt(str(row)) 
+#ask_p()
+pic_prompt_p()

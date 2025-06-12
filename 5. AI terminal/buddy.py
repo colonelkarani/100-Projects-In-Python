@@ -7,6 +7,8 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 def prompt():
     message = input("Enter message:  ")
+    if message.lower() == "quit":
+        return
     response = requests.post(
     url="https://openrouter.ai/api/v1/chat/completions",
     headers={
@@ -16,7 +18,7 @@ def prompt():
         "X-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
     },
     data=json.dumps({
-        "model": "qwen/qwen3-235b-a22b:free",
+        "model": "deepseek/deepseek-chat-v3-0324:free",
         "messages": [
         {
             "role": "user",
@@ -33,7 +35,7 @@ def prompt():
         if 'choices' in response_data:
             answer = response_data['choices'][0]['message']['content']
         
-            print("\033[43m\033[31mResponse:", answer, "\033[0m")
+            print("\033[36mResponse:", answer, "\033[0m")
             prompt()
     else:
         print("Error:", response.status_code, response.text)

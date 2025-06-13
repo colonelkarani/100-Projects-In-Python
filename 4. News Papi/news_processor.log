@@ -1,0 +1,9 @@
+2025-06-13 20:50:59,020 - INFO - Found 0 API key(s) from different providers
+2025-06-13 20:50:59,021 - INFO - Created images folder: news_images
+2025-06-13 20:50:59,022 - INFO - No previous processing data found - starting fresh
+2025-06-13 20:50:59,057 - INFO - Loaded 30 news items from kenyans_news.csv
+2025-06-13 20:50:59,057 - ERROR - No API keys found! Please set API keys in your .env file
+2025-06-13 20:58:07,839 - INFO - Found 0 API key(s) from different providers
+2025-06-13 20:58:07,840 - INFO - No previous processing data found - starting fresh
+2025-06-13 20:58:07,851 - INFO - Loaded 30 news items from kenyans_news.csv
+2025-06-13 20:58:07,851 - ERROR - No API keys found! Please set API keys in your .env file

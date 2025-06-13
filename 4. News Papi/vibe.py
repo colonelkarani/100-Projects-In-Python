@@ -99,26 +99,46 @@ class NewsProcessor:
     
     def _generate_content_hash(self, headline: str, description: str) -> str:
         """Generate hash for content to detect near-duplicates"""
-        content = f"{headline.lower().strip()}{description.lower().strip()}"
-        return hashlib.md5(content.encode('utf-8')).hexdigest()
+        try:
+            if not headline or not description:
+                logger.warning("Empty headline or description for hash generation")
+                return "unknown_" + str(int(time.time()))
+            
+            content = f"{headline.lower().strip()}{description.lower().strip()}"
+            content_hash = hashlib.md5(content.encode('utf-8')).hexdigest()
+            
+            # Ensure hash is at least 8 characters (MD5 is always 32, but being defensive)
+            if len(content_hash) < 8:
+                logger.warning(f"Generated hash is unexpectedly short: {content_hash}")
+                content_hash = (content_hash + "00000000")[:8]
+            
+            logger.debug(f"Generated content hash: '{content_hash}' for headline: '{headline[:50]}'")
+            return content_hash
+        except Exception as e:
+            logger.error(f"Error generating content hash: {e}")
+            return "error_" + str(int(time.time()))
     
     def _is_duplicate(self, headline: str, description: str, url: str) -> bool:
         """Check if this news item has already been processed"""
-        content_hash = self._generate_content_hash(headline, description)
-        
-        if url in self.processed_urls:
-            logger.info(f"Duplicate URL found: {url}")
-            return True
-        
-        if headline in self.processed_headlines:
-            logger.info(f"Duplicate headline found: {headline[:50]}...")
-            return True
-        
-        if content_hash in self.content_hashes:
-            logger.info(f"Duplicate content found: {headline[:50]}...")
-            return True
-        
-        return False
+        try:
+            content_hash = self._generate_content_hash(headline, description)
+            
+            if url in self.processed_urls:
+                logger.info(f"Duplicate URL found: {url}")
+                return True
+            
+            if headline in self.processed_headlines:
+                logger.info(f"Duplicate headline found: {headline[:50]}...")
+                return True
+            
+            if content_hash in self.content_hashes:
+                logger.info(f"Duplicate content found: {headline[:50]}...")
+                return True
+            
+            return False
+        except Exception as e:
+            logger.error(f"Error checking for duplicates: {e}")
+            return False
     
     def _get_current_api_config(self) -> Optional[Dict]:
         """Get current API configuration"""
@@ -172,15 +192,16 @@ class NewsProcessor:
                 if response.status_code == 200:
                     response_data = response.json()
                     if 'choices' in response_data and len(response_data['choices']) > 0:
-                       message = response_data['choices'][0].get('message', {})
-                       content = message.get('content', '')
-                       if content:
-                           return content.strip()
-                       else:
-                           logger.error("API response 'message' or 'content' missing or empty.")
-                           return None
+                        message = response_data['choices'][0].get('message', {})
+                        content = message.get('content', '')
+                        if content:
+                            return content.strip()
+                        else:
+                            logger.error("API response 'message' or 'content' missing or empty.")
+                            return None
                     else:
                         logger.error("No choices in API response")
+                        logger.debug(f"API response: {json.dumps(response_data)}")
                 elif response.status_code == 401:
                     logger.error(f"API key authentication failed for {config['name']}")
                     if not self._switch_to_next_api_key():
@@ -207,6 +228,10 @@ class NewsProcessor:
     
     def rewrite_headline(self, original_headline: str) -> Optional[str]:
         """Rewrite headline to make it more engaging"""
+        if not original_headline or not original_headline.strip():
+            logger.warning("Empty headline provided for rewriting")
+            return None
+        
         system_message = (
             "Rewrite this headline to make it more engaging and clickable. "
             "Keep it concise but compelling. "
@@ -222,12 +247,16 @@ class NewsProcessor:
     
     def rewrite_description(self, original_description: str, headline: str) -> Optional[str]:
         """Rewrite description to make it more engaging"""
+        if not original_description or not original_description.strip():
+            logger.warning("Empty description provided for rewriting")
+            return None
+        
         system_message = (
             "Rewrite this news description to make it more engaging and informative. "
             "Keep the key facts but make it more compelling to read. "
             "Make it 2-3 sentences maximum. "
             "Output only the description as plain text, nothing else please! "
-            "Context headline: " + headline + "\n"
+            "Context headline: " + (headline or "") + "\n"
             "Description to rewrite: "
         )
         
@@ -238,7 +267,11 @@ class NewsProcessor:
     
     def generate_image_prompt(self, headline: str, description: str) -> Optional[str]:
         """Generate image description prompt for the news"""
-        news_content = f"{headline}. {description}"
+        if not headline or not headline.strip():
+            logger.warning("Empty headline provided for image prompt generation")
+            return None
+        
+        news_content = f"{headline}. {description or ''}"
         system_message = (
             "Create a detailed image prompt for AI image generation based on this news. "
             "The image should visually represent the story. "
@@ -254,14 +287,24 @@ class NewsProcessor:
         return image_prompt
     
     def create_image(self, prompt: str, filename: str) -> Optional[str]:
-        """Create image from prompt and save to file"""[2][3]
+        """Create image from prompt and save to file"""
+        # Defensive checks
+        if not prompt or not prompt.strip():
+            logger.error("Image prompt is empty!")
+            return None
+        if not filename or not filename.strip():
+            logger.error("Image filename is empty!")
+            return None
+        if not self.images_folder:
+            logger.error("Images folder not set!")
+            return None
+        
         try:
-            encoded_prompt = urllib.parse.quote(prompt).strip()
+            encoded_prompt = urllib.parse.quote(prompt.strip())
             url = "https://image.pollinations.ai/prompt/" + encoded_prompt
             
             response = requests.get(url, timeout=30)
             if response.status_code == 200:
-                print("Accessed the url to print")
                 filepath = os.path.join(self.images_folder, f"{filename}.png")
                 
                 with open(filepath, "wb") as f:
@@ -333,11 +376,16 @@ class NewsProcessor:
                 reader = csv.DictReader(f)
                 for row in reader:
                     if 'headline' in row and 'description' in row and 'url' in row:
-                        news_items.append({
-                            'headline': row['headline'].strip(),
-                            'description': row['description'].strip(),
-                            'url': row['url'].strip()
-                        })
+                        headline = str(row['headline']).strip() if row['headline'] else ""
+                        description = str(row['description']).strip() if row['description'] else ""
+                        url = str(row['url']).strip() if row['url'] else ""
+                        
+                        if headline and description and url:
+                            news_items.append({
+                                'headline': headline,
+                                'description': description,
+                                'url': url
+                            })
             
             logger.info(f"Loaded {len(news_items)} news items from {self.input_news_file}")
             return news_items
@@ -365,9 +413,9 @@ class NewsProcessor:
         logger.info(f"Available API providers: {[config['name'] for config in self.api_configs]}")
         
         for index, item in enumerate(news_items, 1):
-            headline = item['headline']
-            description = item['description']
-            url = item['url']
+            headline = item.get('headline', '').strip()
+            description = item.get('description', '').strip()
+            url = item.get('url', '').strip()
             
             if not headline or not description or not url:
                 logger.error(f"Skipping item {index} due to missing headline/description/url.")
@@ -407,9 +455,25 @@ class NewsProcessor:
                 
                 time.sleep(delay_between_requests)
                 
-                # Create image
+                # Create image with defensive checks
                 content_hash = self._generate_content_hash(headline, description)
+                if not content_hash or len(content_hash) < 8:
+                    logger.error(f"Generated content hash is too short: '{content_hash}' for headline '{headline}'")
+                    content_hash = (content_hash + "00000000")[:8]
+                
                 image_filename = f"news_{content_hash[:8]}"
+                
+                # Additional defensive checks
+                if not image_prompt or not image_prompt.strip():
+                    logger.warning(f"Image prompt is empty for: {headline[:50]}...")
+                    image_prompt = f"A visual representation of: {rewritten_headline}"
+                
+                if not image_filename or not image_filename.strip():
+                    logger.error(f"Image filename is empty for: {headline[:50]}...")
+                    image_filename = "news_unknown"
+                
+                logger.debug(f"Calling create_image with prompt: '{image_prompt[:60]}...', filename: '{image_filename}'")
+                
                 image_filepath = self.create_image(image_prompt, image_filename)
                 
                 if not image_filepath:
@@ -439,7 +503,7 @@ class NewsProcessor:
                 time.sleep(delay_between_requests)
                 
             except Exception as e:
-                logger.error(f"Error processing item {index}: {e}. Headline: '{headline}', Description: '{description}', URL: '{url}'")
+                logger.error(f"Error processing item {index}: {e}. Headline: '{headline}', Description: '{description[:100]}...', URL: '{url}'")
                 continue
         
         # Print summary

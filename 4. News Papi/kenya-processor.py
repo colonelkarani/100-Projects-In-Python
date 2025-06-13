@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from typing import List, Dict, Set, Optional
 import time
 import logging
+import urllib.parse
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -20,27 +21,65 @@ class NewsProcessor:
     """
     A comprehensive news processing system that:
     1. Reads scraped news from CSV
-    2. Checks for duplicates
-    3. Rewrites headlines using AI
-    4. Generates image prompts
-    5. Stores processed data
+    2. Checks for duplicates across all operations
+    3. Rewrites headlines AND descriptions using AI
+    4. Generates image prompts and creates actual images
+    5. Stores all processed data in a master CSV file
+    6. Handles API failures with multiple keys and retries
     """
     
     def __init__(self):
-        self.api_key = os.getenv('API_KEY')
-        self.base_url = "https://openrouter.ai/api/v1/chat/completions"
-        self.model_name = "qwen/qwen3-235b-a22b:free"
+        # Multiple API configurations - same format, different keys and models
+        self.api_configs = [
+            {
+                'name': 'Qwen',
+                'api_key': os.getenv('API_KEY_1'),
+                'base_url': "https://api-inference.huggingface.co/models/meta-llama/llama-4-maverick:free",
+                'model': "DeepSeek-R1-0528-Qwen3-8B"
+            },
+            {
+                'name': 'Deepseek Chimera',
+                'api_key': os.getenv('API_KEY_2'),
+                'base_url': "https://openrouter.ai/api/v1/chat/completions",
+                'model': "tngtech/deepseek-r1t-chimera:free"
+            },
+            {
+                'name': 'Sarvam',
+                'api_key': os.getenv('API_KEY_3'),
+                'base_url': "https://openrouter.ai/api/v1/chat/completions",
+                'model': "sarvamai/sarvam-m:free"
+            },
+            {
+                'name': 'Deepseek V3',
+                'api_key': os.getenv('API_KEY_4'),
+                'base_url': "https://openrouter.ai/api/v1/chat/completions",
+                'model': "deepseek/deepseek-chat-v3-0324:free"
+            },
+            {
+                'name': 'Intern V',
+                'api_key': os.getenv('API_KEY_5'),
+                'base_url': "https://openrouter.ai/api/v1/chat/completions",
+                'model': "opengvlab/internvl3-14b:free"
+            }
+        ]
+        
+        # Filter out configs without API keys
+        self.api_configs = [config for config in self.api_configs if config['api_key']]
+        self.current_api_index = 0
         
         # File paths
-        self.input_news_file = "kenyans_news.csv"  # From your scraper
-        self.processed_headlines_file = "processed_headlines.csv"
-        self.image_prompts_file = "image_prompts.csv"
+        self.input_news_file = "kenyans_news.csv"
+        self.master_output_file = "processed_news_master.csv"
         self.duplicate_tracking_file = "processed_tracking.csv"
+        self.images_folder = "generated_images"
         
         # Duplicate tracking
         self.processed_headlines: Set[str] = set()
         self.processed_urls: Set[str] = set()
         self.content_hashes: Set[str] = set()
+        
+        # Create images folder
+        os.makedirs(self.images_folder, exist_ok=True)
         
         self._load_existing_processed_data()
     
@@ -81,58 +120,93 @@ class NewsProcessor:
         
         return False
     
-    def _make_api_request(self, prompt: str, system_message: str) -> Optional[str]:
-        """Make API request to OpenRouter with error handling"""
-        headers = {
-            "Authorization": self.api_key,
-            "Content-Type": "application/json",
-            "HTTP-Referer": "https://your-site.com",
-            "X-Title": "News Processor"
-        }
-        
-        payload = {
-            "model": self.model_name,
-            "messages": [
-                {
-                    "role": "user",
-                    "content": system_message + prompt
-                }
-            ]
-        }
-        
-        try:
-            response = requests.post(
-                url=self.base_url,
-                headers=headers,
-                data=json.dumps(payload),
-                timeout=30
-            )
+    def _get_current_api_config(self) -> Optional[Dict]:
+        """Get current API configuration"""
+        if self.current_api_index < len(self.api_configs):
+            return self.api_configs[self.current_api_index]
+        return None
+    
+    def _switch_to_next_api_key(self) -> bool:
+        """Switch to next API key, return False if no more keys available"""
+        self.current_api_index += 1
+        if self.current_api_index < len(self.api_configs):
+            config = self._get_current_api_config()
+            logger.info(f"Switching to {config['name']} (API {self.current_api_index + 1})")
+            return True
+        return False
+    
+    def _make_api_request(self, prompt: str, system_message: str, max_retries: int = 3) -> Optional[str]:
+        """Make API request with error handling and API key fallback"""
+        for attempt in range(max_retries):
+            config = self._get_current_api_config()
             
-            if response.status_code == 200:
-                response_data = response.json()
-                if 'choices' in response_data and len(response_data['choices']) > 0:
-                    return response_data['choices'][0]['message']['content'].strip()
-                else:
-                    logger.error("No choices in API response")
-                    return None
-            else:
-                logger.error(f"API Error: {response.status_code} - {response.text}")
+            if not config:
+                logger.error("No API configurations available!")
                 return None
+            
+            headers = {
+                "Authorization": f"Bearer {config['api_key']}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://your-site.com",
+                "X-Title": "News Processor"
+            }
+            
+            payload = {
+                "model": config['model'],
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": system_message + prompt
+                    }
+                ]
+            }
+            
+            try:
+                response = requests.post(
+                    url=config['base_url'],
+                    headers=headers,
+                    data=json.dumps(payload),
+                    timeout=30
+                )
                 
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Request failed: {e}")
-            return None
-        except Exception as e:
-            logger.error(f"Unexpected error in API request: {e}")
-            return None
+                if response.status_code == 200:
+                    response_data = response.json()
+                    if 'choices' in response_data and len(response_data['choices']) > 0:
+                        return response_data['choices'][0]['message']['content'].strip()
+                    else:
+                        logger.error("No choices in API response")
+                elif response.status_code == 401:
+                    logger.error(f"API key authentication failed for {config['name']}")
+                    if not self._switch_to_next_api_key():
+                        logger.error("All API keys exhausted!")
+                        return None
+                    continue
+                else:
+                    logger.error(f"API Error for {config['name']}: {response.status_code} - {response.text}")
+                    
+            except requests.exceptions.RequestException as e:
+                logger.error(f"Request failed for {config['name']} (attempt {attempt + 1}): {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)  # Exponential backoff
+                    continue
+            except Exception as e:
+                logger.error(f"Unexpected error in API request for {config['name']}: {e}")
+                
+        # If all retries failed, try next API key
+        if self._switch_to_next_api_key():
+            logger.info("Retrying with next API provider...")
+            return self._make_api_request(prompt, system_message, max_retries)
+        
+        return None
     
     def rewrite_headline(self, original_headline: str) -> Optional[str]:
         """Rewrite headline to make it more engaging"""
         system_message = (
-            "Rewrite this headline to make it more engaging. "
+            "Rewrite this headline to make it more engaging and clickable. "
+            "Keep it concise but compelling. "
             "Output only the headline as plain text, nothing else please! "
-            "If you put anything else my program will crash and please no recommendations "
-            "just the renovated headlines in plain text. This is the headline: "
+            "If you put anything else my program will crash. "
+            "Just the renovated headline in plain text. This is the headline: "
         )
         
         rewritten = self._make_api_request(original_headline, system_message)
@@ -140,16 +214,32 @@ class NewsProcessor:
             logger.info(f"Headline rewritten: {original_headline[:30]}... -> {rewritten[:30]}...")
         return rewritten
     
+    def rewrite_description(self, original_description: str, headline: str) -> Optional[str]:
+        """Rewrite description to make it more engaging"""
+        system_message = (
+            "Rewrite this news description to make it more engaging and informative. "
+            "Keep the key facts but make it more compelling to read. "
+            "Make it 2-3 sentences maximum. "
+            "Output only the description as plain text, nothing else please! "
+            "Context headline: " + headline + "\n"
+            "Description to rewrite: "
+        )
+        
+        rewritten = self._make_api_request(original_description, system_message)
+        if rewritten:
+            logger.info(f"Description rewritten for: {headline[:30]}...")
+        return rewritten
+    
     def generate_image_prompt(self, headline: str, description: str) -> Optional[str]:
         """Generate image description prompt for the news"""
         news_content = f"{headline}. {description}"
         system_message = (
-            "Think like an expert. Describe an image that would visually represent this news. "
-            "My AI model does not render text well so do not include image descriptions of text. "
-            "This is also a Kenyan website so try to include a Kenyan context not so much but slightly. "
-            "Make the users be able to connect with the image. "
-            "Output only the description, nothing else please. "
-            "Treat every prompt as separate and please don't output anything else other than the prompt in plain text: "
+            "Create a detailed image prompt for AI image generation based on this news. "
+            "The image should visually represent the story. "
+            "Do not include text in the image description. "
+            "Include Kenyan context where appropriate. "
+            "Make it engaging and relatable. "
+            "Output only the image prompt, nothing else please: "
         )
         
         image_prompt = self._make_api_request(news_content, system_message)
@@ -157,30 +247,51 @@ class NewsProcessor:
             logger.info(f"Image prompt generated for: {headline[:30]}...")
         return image_prompt
     
-    def _save_processed_headline(self, original_headline: str, rewritten_headline: str, 
-                                description: str, url: str) -> None:
-        """Save processed headline to CSV"""
+    def create_image(self, prompt: str, filename: str) -> Optional[str]:
+        """Create image from prompt and save to file"""[2][3]
         try:
-            file_exists = os.path.exists(self.processed_headlines_file)
-            with open(self.processed_headlines_file, 'a', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f)
-                if not file_exists:
-                    writer.writerow(['original_headline', 'rewritten_headline', 'description', 'url'])
-                writer.writerow([original_headline, rewritten_headline, description, url])
+            encoded_prompt = urllib.parse.quote(prompt)
+            url = "https://image.pollinations.ai/prompt/" + encoded_prompt
+            
+            response = requests.get(url, timeout=30)
+            if response.status_code == 200:
+                filepath = os.path.join(self.images_folder, f"{filename}.png")
+                
+                with open(filepath, "wb") as f:
+                    f.write(response.content)
+                
+                logger.info(f"Image created: {filepath}")
+                return filepath
+            else:
+                logger.error(f"Image generation failed: {response.status_code}")
+                return None
+                
         except Exception as e:
-            logger.error(f"Error saving processed headline: {e}")
+            logger.error(f"Error creating image: {e}")
+            return None
     
-    def _save_image_prompt(self, headline: str, image_prompt: str, url: str) -> None:
-        """Save image prompt to CSV"""
+    def _save_to_master_csv(self, data: Dict) -> None:
+        """Save all processed data to master CSV file"""
         try:
-            file_exists = os.path.exists(self.image_prompts_file)
-            with open(self.image_prompts_file, 'a', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f)
+            file_exists = os.path.exists(self.master_output_file)
+            
+            with open(self.master_output_file, 'a', newline='', encoding='utf-8') as f:
+                fieldnames = [
+                    'original_headline', 'rewritten_headline',
+                    'original_description', 'rewritten_description',
+                    'image_prompt', 'image_filepath', 'url',
+                    'content_hash', 'processed_date'
+                ]
+                
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                
                 if not file_exists:
-                    writer.writerow(['headline', 'image_prompt', 'url'])
-                writer.writerow([headline, image_prompt, url])
+                    writer.writeheader()
+                
+                writer.writerow(data)
+                
         except Exception as e:
-            logger.error(f"Error saving image prompt: {e}")
+            logger.error(f"Error saving to master CSV: {e}")
     
     def _save_tracking_data(self, headline: str, description: str, url: str) -> None:
         """Save tracking data to prevent duplicates"""
@@ -228,18 +339,23 @@ class NewsProcessor:
             logger.error(f"Error loading news data: {e}")
             return news_items
     
-    def process_all_news(self, delay_between_requests: float = 1.0) -> None:
-        """Process all news items - rewrite headlines and generate image prompts"""
+    def process_all_news(self, delay_between_requests: float = 2.0) -> None:
+        """Process all news items - rewrite headlines, descriptions, and create images"""
         news_items = self.load_news_data()
         
         if not news_items:
             logger.error("No news items to process!")
             return
         
+        if not self.api_configs:
+            logger.error("No API keys found! Please set API keys in your .env file")
+            return
+        
         new_items_count = 0
         processed_count = 0
         
         logger.info(f"Starting to process {len(news_items)} news items...")
+        logger.info(f"Available API providers: {[config['name'] for config in self.api_configs]}")
         
         for index, item in enumerate(news_items, 1):
             headline = item['headline']
@@ -260,26 +376,55 @@ class NewsProcessor:
                 rewritten_headline = self.rewrite_headline(headline)
                 if not rewritten_headline:
                     logger.warning(f"Failed to rewrite headline: {headline[:50]}...")
-                    rewritten_headline = headline  # Use original if rewrite fails
+                    rewritten_headline = headline
                 
-                # Add delay to respect API limits
+                time.sleep(delay_between_requests)
+                
+                # Rewrite description
+                rewritten_description = self.rewrite_description(description, headline)
+                if not rewritten_description:
+                    logger.warning(f"Failed to rewrite description for: {headline[:50]}...")
+                    rewritten_description = description
+                
                 time.sleep(delay_between_requests)
                 
                 # Generate image prompt
-                image_prompt = self.generate_image_prompt(headline, description)
+                image_prompt = self.generate_image_prompt(rewritten_headline, rewritten_description)
                 if not image_prompt:
                     logger.warning(f"Failed to generate image prompt for: {headline[:50]}...")
-                    image_prompt = f"A visual representation of: {headline}"
+                    image_prompt = f"A visual representation of: {rewritten_headline}"
                 
-                # Save processed data
-                self._save_processed_headline(headline, rewritten_headline, description, url)
-                self._save_image_prompt(rewritten_headline, image_prompt, url)
+                time.sleep(delay_between_requests)
+                
+                # Create image
+                content_hash = self._generate_content_hash(headline, description)
+                image_filename = f"news_{content_hash[:8]}"
+                image_filepath = self.create_image(image_prompt, image_filename)
+                
+                if not image_filepath:
+                    logger.warning(f"Failed to create image for: {headline[:50]}...")
+                    image_filepath = "image_generation_failed"
+                
+                # Prepare data for master CSV
+                master_data = {
+                    'original_headline': headline,
+                    'rewritten_headline': rewritten_headline,
+                    'original_description': description,
+                    'rewritten_description': rewritten_description,
+                    'image_prompt': image_prompt,
+                    'image_filepath': image_filepath,
+                    'url': url,
+                    'content_hash': content_hash,
+                    'processed_date': pd.Timestamp.now().isoformat()
+                }
+                
+                # Save all data
+                self._save_to_master_csv(master_data)
                 self._save_tracking_data(headline, description, url)
                 
                 processed_count += 1
                 logger.info(f"✓ Successfully processed item {index}")
                 
-                # Add delay between requests
                 time.sleep(delay_between_requests)
                 
             except Exception as e:
@@ -296,27 +441,34 @@ class NewsProcessor:
         print(f"Duplicates skipped: {len(news_items) - new_items_count}")
         print(f"{'='*60}")
         print(f"Output files:")
-        print(f"- Processed headlines: {self.processed_headlines_file}")
-        print(f"- Image prompts: {self.image_prompts_file}")
+        print(f"- Master CSV: {self.master_output_file}")
+        print(f"- Images folder: {self.images_folder}")
         print(f"- Tracking data: {self.duplicate_tracking_file}")
         print(f"{'='*60}")
 
 def main():
     """Main function to run the news processor"""
-    print("Starting News Processing System...")
+    print("Starting Enhanced News Processing System...")
     print("-" * 50)
     
     # Initialize processor
     processor = NewsProcessor()
     
-    # Check if API key is available
-    if not processor.api_key:
-        logger.error("API_KEY not found in environment variables!")
-        print("Please set your API_KEY in the .env file")
+    # Check if API keys are available
+    if not processor.api_configs:
+        logger.error("No API keys found in environment variables!")
+        print("Please set one or more of these API keys in your .env file:")
+        print("- API_KEY_1")
+        print("- API_KEY_2") 
+        print("- API_KEY_3")
+        print("- API_KEY_4")
+        print("- API_KEY_5")
         return
     
+    print(f"Found {len(processor.api_configs)} API key(s) from different providers")
+    
     # Process all news
-    processor.process_all_news(delay_between_requests=1.5)  # 1.5 second delay between API calls
+    processor.process_all_news(delay_between_requests=2.0)
 
 if __name__ == "__main__":
     main()

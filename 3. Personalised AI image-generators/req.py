@@ -12,6 +12,5 @@ filename = name + ".png"
 with open(filename, "wb") as f:
     f.write(response.content)
 
-# Open and display the image automatically
 img = Image.open(filename)
 img.show()

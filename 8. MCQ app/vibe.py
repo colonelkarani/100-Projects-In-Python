@@ -1,7 +1,7 @@
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-72B-Instruct"  # Replace 'gpt2' with your chosen model
-API_TOKEN = "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"  # Replace with your Hugging Face access token
+API_TOKEN = ""  # Replace with your Hugging Face access token
 
 headers = {
     "Authorization": f"Bearer {API_TOKEN}"

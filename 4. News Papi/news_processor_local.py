@@ -10,6 +10,7 @@ import time
 import logging
 import urllib.parse
 import subprocess
+import re
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -178,7 +179,9 @@ class NewsProcessor:
                     response_data = response.json()
                     content = response_data.get('response', '')
                     if content:
-                        return content.strip()
+                        # Remove content between <think> and </think> tags
+                        clean_content = re.sub(r'<think>.*?</think>', '', content, flags=re.DOTALL)
+                        return clean_content.strip()
                     else:
                         logger.error("Empty response from Ollama")
                         return None

@@ -78,7 +78,7 @@ score = round(passed / number_of_questions * 100)
 
 print(f"\n{'='*50}")
 print(f"Final Score: {score}% ({passed}/{number_of_questions})")
-print(f"Progress: <{'\033[32m■\033[0m' * passed}{'\033[31m■\033[0m' * (number_of_questions - passed)}>")
+print(f" <{'\033[32m■\033[0m' * passed*5}{'\033[31m■\033[0m' * (number_of_questions - passed)*5}>")
 
 if passed == number_of_questions:
     print("🌟 Are you sure you're not a genius? 🌟")

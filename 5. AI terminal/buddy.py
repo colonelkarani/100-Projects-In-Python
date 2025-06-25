@@ -35,7 +35,7 @@ def prompt():
         if 'choices' in response_data:
             answer = response_data['choices'][0]['message']['content']
         
-            print("\033[36mResponse:", answer, "\033[0m")
+            print("\033[33mResponse:", answer, "\033[0m")
             prompt()
     else:
         print("Error:", response.status_code, response.text)

@@ -1,27 +1,103 @@
 Question,Option A,Option B,Option C,Option D,Correct Answer
-Which of the following is the most common type of stroke?,Ischemic,Hemorrhagic,Subarachnoid,Venous,Ischemic
-A 65-year-old man presents with sudden right-sided weakness and aphasia. Which cerebral artery is most likely affected?,Anterior cerebral artery,Middle cerebral artery,Posterior cerebral artery,Basilar artery,Middle cerebral artery
-Which of the following is NOT a risk factor for stroke?,Hypertension,Diabetes mellitus,Hyperlipidemia,Appendicitis,Appendicitis
-The most important initial imaging modality in suspected acute stroke is:,CT scan without contrast,MRI with contrast,Ultrasound,EEG,CT scan without contrast
-Which of the following is an indication for thrombolytic therapy in acute ischemic stroke?,Onset of symptoms within 4.5 hours,History of intracranial hemorrhage,Active bleeding,Platelet count <100000,Onset of symptoms within 4.5 hours
-The most common cause of intracerebral hemorrhage is:,Hypertension,Trauma,Aneurysm rupture,Coagulopathy,Hypertension
-Which of the following is a classic sign of subarachnoid hemorrhage?,Thunderclap headache,Gradual onset weakness,Visual hallucinations,Progressive memory loss,Thunderclap headache
-Which of the following is the best initial management for a patient with acute ischemic stroke within the therapeutic window?,Aspirin,IV tPA,Heparin,Warfarin,IV tPA
-Which of the following is a modifiable risk factor for stroke?,Age,Gender,Hypertension,Family history,Hypertension
-Which cardiac arrhythmia is most commonly associated with embolic stroke?,Atrial fibrillation,Ventricular tachycardia,Sinus bradycardia,First-degree AV block,Atrial fibrillation
-What is the primary goal of blood pressure management in acute ischemic stroke prior to thrombolysis?,Lower BP <140/90 mmHg,Maintain BP <185/110 mmHg,Increase BP to improve perfusion,No BP control needed,Maintain BP <185/110 mmHg
-A transient ischemic attack (TIA) is best defined as:,Stroke symptoms lasting >24 hours,Stroke symptoms resolving within 24 hours,Progressive neurological decline,Intracerebral hemorrhage,Stroke symptoms resolving within 24 hours
-Which of the following medications is recommended for secondary prevention after non-cardioembolic ischemic stroke?,Aspirin,Warfarin,Heparin,Alteplase,Aspirin
-Which of the following findings is most specific for lacunar stroke?,Pure motor or sensory deficit,Global aphasia,Homonymous hemianopia,Ataxia with vertigo,Pure motor or sensory deficit
-Which of the following is a contraindication to thrombolytic therapy in acute stroke?,Onset of symptoms 2 hours ago,Current use of antiplatelet agents,Active internal bleeding,Age >80 years,Active internal bleeding
-Which of the following is the most common long-term complication after stroke?,Seizures,Depression,Chronic kidney disease,Diabetes,Depression
-The most important modifiable risk factor for both ischemic and hemorrhagic stroke is:,Smoking,Hypertension,Obesity,Alcohol use,Hypertension
-Which of the following is the main mechanism of ischemic stroke in atrial fibrillation?,Small vessel disease,Cardioembolism,Large artery atherosclerosis,Venous thrombosis,Cardioembolism
-In a patient with suspected subarachnoid hemorrhage and a negative CT scan the next best diagnostic step is:,Repeat CT scan,Carotid Doppler,Lumbar puncture,EEG,Lumbar puncture
-Which of the following is the most common site of hypertensive intracerebral hemorrhage?,Frontal lobe,Pons,Basal ganglia,Cerebellum,Basal ganglia
-Which of the following is the first-line antiplatelet agent for secondary prevention of non-cardioembolic stroke?,Aspirin,Clopidogrel,Warfarin,Heparin,Aspirin
-Which of the following is a recognized complication of subarachnoid hemorrhage?,Vasospasm,Hyponatremia,Seizures,All of the above,All of the above
-Which of the following is the most important initial step in the management of a patient with acute stroke?,Secure airway,Start antibiotics,Administer insulin,Begin physical therapy,Secure airway
-Which of the following is the best imaging modality to differentiate between ischemic and hemorrhagic stroke in the acute setting?,CT scan without contrast,MRI with contrast,Carotid Doppler,EEG,CT scan without contrast
-Which of the following is the most common cause of stroke in young adults?,Atherosclerosis,Cardiac embolism,Carotid dissection,Hypertension,Carotid dissection
-Which of the following is the most common cause of death in acute stroke?,Aspiration pneumonia,Myocardial infarction,Renal failure,Sepsis,Aspiration pneumonia
+Which artery is most commonly involved in embolic ischemic stroke?,Anterior cerebral artery,Middle cerebral artery,Posterior cerebral artery,Basilar artery,Middle cerebral artery
+A patient presents with right hemiparesis and expressive aphasia. Which cerebral artery is most likely affected?,Left posterior cerebral artery,Right middle cerebral artery,Left middle cerebral artery,Right anterior cerebral artery,Left middle cerebral artery
+Which of the following is NOT a typical contraindication for tPA administration in acute ischemic stroke?,Onset of symptoms >4.5 hours,Platelet count <100000,Active internal bleeding,Age over 80,Age over 80
+The most common cause of spontaneous intracerebral hemorrhage is:,Amyloid angiopathy,Chronic hypertension,Trauma,Arteriovenous malformation,Chronic hypertension
+A patient with left homonymous hemianopia and right-sided weakness most likely has a stroke in which vascular territory?,Left anterior cerebral artery,Right posterior cerebral artery,Left posterior cerebral artery,Right middle cerebral artery,Left posterior cerebral artery
+Which of the following is the first imaging study recommended in the evaluation of acute stroke?,MRI with contrast,Non-contrast CT head,CT angiography,Carotid Doppler,Non-contrast CT head
+The penumbra in acute ischemic stroke refers to:,The area of hemorrhage,The core of infarcted tissue,The area of potentially salvageable tissue,The area of vasogenic edema,The area of potentially salvageable tissue
+Which of the following is the strongest risk factor for stroke?,Diabetes mellitus,Hypertension,Hyperlipidemia,Smoking,Hypertension
+Which clinical syndrome is most suggestive of a lacunar stroke?,Global aphasia,Contralateral pure motor hemiparesis,Homonymous hemianopia,Locked-in syndrome,Contralateral pure motor hemiparesis
+What is the recommended blood pressure threshold for initiating antihypertensive therapy in a patient eligible for tPA?,>220/120 mmHg,>185/110 mmHg,>160/90 mmHg,>140/90 mmHg,>185/110 mmHg
+Which is the most important initial step in the management of a patient presenting with suspected acute stroke?,Start aspirin,Obtain urgent brain imaging,Start IV heparin,Administer IV fluids,Obtain urgent brain imaging
+Which of the following is a recognized complication of large cerebellar infarcts?,Cerebral edema,Hydrocephalus,Myocardial infarction,Renal failure,Hydrocephalus
+Which stroke syndrome is characterized by ipsilateral cranial nerve deficits and contralateral hemiparesis?,Wallenberg syndrome,Weber syndrome,Locked-in syndrome,Millard-Gubler syndrome,Weber syndrome
+Which of the following is most likely to cause a cardioembolic stroke?,Mitral valve prolapse,Patent foramen ovale,Atrial fibrillation,Hypertrophic cardiomyopathy,Atrial fibrillation
+Which of the following is NOT a feature of posterior circulation stroke?,Vertigo,Ataxia,Amaurosis fugax,Dysarthria,Amaurosis fugax
+Which of the following is an absolute contraindication to thrombolytic therapy in acute ischemic stroke?,History of hypertension,Age >75 years,Active gastrointestinal bleeding,Diabetes mellitus,Active gastrointestinal bleeding
+Which of the following is the most common site for hypertensive intracerebral hemorrhage?,Thalamus,Pons,Cerebellum,Putamen,Putamen
+A patient presents with sudden onset of "worst headache of my life." What is the most likely diagnosis?,Ischemic stroke,Subarachnoid hemorrhage,Epidural hematoma,Subdural hematoma,Subarachnoid hemorrhage
+Which of the following is a modifiable risk factor for stroke recurrence?,Age,Sex,Hypertension,Family history,Hypertension
+The Oxford Stroke Classification "TACI" requires which of the following?,Motor deficit only,Visual field deficit only,All three: higher dysfunction, homonymous hemianopia, motor/sensory deficit,Ataxia,All three: higher dysfunction, homonymous hemianopia, motor/sensory deficit
+Which of the following is the best acute treatment for a patient with ischemic stroke who arrives within 2 hours of symptom onset and meets all criteria?,Aspirin,IV tPA,IV heparin,IV mannitol,IV tPA
+Which of the following is a classic feature of anterior cerebral artery stroke?,Contralateral face and arm weakness,Contralateral leg weakness,Homonymous hemianopia,Aphasia,Contralateral leg weakness
+Which of the following investigations is most useful for identifying the ischemic penumbra?,Non-contrast CT,CT perfusion,MRA neck,Carotid ultrasound,CT perfusion
+What is the most common cause of subarachnoid hemorrhage?,Hypertension,Ruptured saccular aneurysm,Trauma,Arteriovenous malformation,Ruptured saccular aneurysm
+Which of the following is a key secondary prevention strategy after ischemic stroke?,Antiepileptic drugs,Statin therapy,IV tPA,IVIG,Statin therapy
+Which of the following is the most common cause of stroke in young adults?,Carotid dissection,Hypertension,Atrial fibrillation,Diabetes mellitus,Carotid dissection
+What is the recommended time window for mechanical thrombectomy in select patients with large vessel occlusion?,Within 3 hours,Within 4.5 hours,Within 6 hours,Up to 24 hours,Up to 24 hours
+Which of the following is a recognized complication of tPA therapy?,Renal failure,Intracerebral hemorrhage,Seizure,Myocardial infarction,Intracerebral hemorrhage
+Which of the following is the most common long-term disability following stroke?,Aphasia,Depression,Motor impairment,Seizures,Motor impairment
+Which of the following is the best predictor of poor outcome in intracerebral hemorrhage?,Age <50,Small hematoma volume,Low Glasgow Coma Scale,History of diabetes,Low Glasgow Coma Scale
+Which of the following is the initial antiplatelet agent recommended for acute non-cardioembolic ischemic stroke?,Aspirin,Clopidogrel,Warfarin,Dipyridamole,Aspirin
+Which of the following is most likely to improve functional outcome if started early after stroke?,Physical therapy,Antibiotics,Statins,Antidepressants,Physical therapy
+Which of the following is a feature of lateral medullary (Wallenberg) syndrome?,Ipsilateral tongue weakness,Contralateral facial pain and temperature loss,Contralateral body pain and temperature loss,Contralateral hemiparesis,Contralateral body pain and temperature loss
+Which of the following is the most sensitive imaging modality for detecting acute ischemic stroke?,Non-contrast CT,Diffusion-weighted MRI,CT angiography,Carotid Doppler,Diffusion-weighted MRI
+Which of the following is the most common cause of death in the first month after stroke?,Recurrent stroke,Infection,Cardiac complications,Brain edema,Brain edema
+Which of the following is the most appropriate management for a patient with suspected stroke and hypoglycemia?,Administer IV insulin,Administer IV dextrose,Administer aspirin,Administer IV tPA,Administer IV dextrose
+Which of the following is a recognized risk of carotid endarterectomy?,Renal failure,Hyperkalemia,Cranial nerve injury,Deep vein thrombosis,Cranial nerve injury
+Which of the following is a feature of subcortical (lacunar) stroke?,Aphasia,Neglect,Pure sensory deficit,Homonymous hemianopia,Pure sensory deficit
+Which of the following statements about transient ischemic attack (TIA) is correct?,TIA symptoms last more than 24 hours,TIA is always associated with infarction on imaging,TIA confers a high risk of stroke in the next 48 hours,TIA is caused only by emboli,TIA confers a high risk of stroke in the next 48 hours
+Which of the following is the most appropriate secondary prevention for a patient with atrial fibrillation and prior ischemic stroke?,Aspirin,Clopidogrel,Warfarin,Statin,Warfarin
+Which of the following is the best predictor for hemorrhagic transformation after ischemic stroke?,Small infarct size,Early aspirin use,Large infarct size,Low blood pressure,Large infarct size
+Which of the following is a common cause of stroke in patients with sickle cell disease?,Hypertension,Cardioembolism,Large vessel vasculopathy,Small vessel disease,Large vessel vasculopathy
+Which of the following is NOT a recognized risk factor for stroke?,Hypertension,Hyperlipidemia,Obesity,Hyperthyroidism,Hyperthyroidism
+Which of the following is a typical presentation of a posterior cerebral artery stroke?,Aphasia,Contralateral homonymous hemianopia,Contralateral leg weakness,Neglect,Contralateral homonymous hemianopia
+Which of the following is the most common cause of cerebral venous sinus thrombosis?,Pregnancy,Trauma,Hypertension,Diabetes mellitus,Pregnancy
+Which of the following is the most appropriate initial management for a patient with suspected subarachnoid hemorrhage and normal CT?,Start IV heparin,Perform lumbar puncture,Administer tPA,Start aspirin,Perform lumbar puncture
+Which of the following is the most common cause of death in subarachnoid hemorrhage survivors?,Rebleeding,Hydrocephalus,Vasospasm,Seizure,Vasospasm
+Which of the following is a typical feature of a left middle cerebral artery stroke in a right-handed patient?,Left facial droop,Right hemiparesis and aphasia,Left hemiparesis and neglect,Right facial numbness,Right hemiparesis and aphasia
+Which of the following is the most appropriate blood pressure management for a patient with acute ischemic stroke NOT eligible for tPA?,Lower BP to <140/90 mmHg,Lower BP to <120/80 mmHg,Lower BP only if >220/120 mmHg,Start IV nitroprusside,Lower BP only if >220/120 mmHg
+Which of the following is the most common cause of death in the first week following massive cerebral infarction?,Pulmonary embolism,Myocardial infarction,Transtentorial herniation,Sepsis,Transtentorial herniation
+Which of the following is the most common cause of hemorrhagic transformation after ischemic stroke?,Early aspirin use,Large infarct size,Low cholesterol,Statin therapy,Large infarct size
+Which of the following is the most likely cause of sudden onset quadriplegia and preserved consciousness?,Basilar artery thrombosis,Anterior cerebral artery infarct,Middle cerebral artery infarct,Posterior cerebral artery infarct,Basilar artery thrombosis
+Which of the following is the best initial diagnostic test for suspected carotid artery stenosis?,Carotid angiography,Carotid duplex ultrasound,MR angiography,CT perfusion,Carotid duplex ultrasound
+Which of the following is the most appropriate antithrombotic therapy for a patient with a mechanical heart valve and prior stroke?,Aspirin,Clopidogrel,Warfarin,Statin,Warfarin
+Which of the following is most likely to cause a "locked-in" syndrome?,Pontine infarction,Thalamic infarct,Medullary infarct,Temporal lobe infarct,Pontine infarction
+Which of the following is the most important modifiable risk factor for primary prevention of stroke?,Age,Sex,Hypertension,Family history,Hypertension
+Which of the following is the most common site of atherothrombotic stroke?,Posterior cerebral artery,Middle cerebral artery,Anterior cerebral artery,Basilar artery,Middle cerebral artery
+Which of the following is the most common cause of death in patients with intracerebral hemorrhage?,Seizure,Rebleeding,Brain herniation,Deep vein thrombosis,Brain herniation
+Which of the following is the most appropriate management for a patient with cerebellar hemorrhage and signs of brainstem compression?,IV tPA,Immediate surgical decompression,IV mannitol only,Start aspirin,Immediate surgical decompression
+Which of the following is the most common cause of vascular dementia?,Multiple lacunar infarcts,Single large infarct,Subarachnoid hemorrhage,Hypertensive encephalopathy,Multiple lacunar infarcts
+Which of the following is the most appropriate initial management for a patient with acute ischemic stroke and known sickle cell disease?,IV tPA,Exchange transfusion,IV heparin,IV mannitol,Exchange transfusion
+Which of the following is the most common cause of transient monocular blindness (amaurosis fugax)?,Retinal vein occlusion,Retinal artery embolism,Optic neuritis,Temporal arteritis,Retinal artery embolism
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypoxia?,Start aspirin,Administer supplemental oxygen,Start IV heparin,Start IV tPA,Administer supplemental oxygen
+Which of the following is the most common cause of death in patients with subacute stroke?,Seizure,Infection,Recurrent stroke,Renal failure,Infection
+Which of the following is the most appropriate secondary prevention for a patient with non-cardioembolic ischemic stroke?,Aspirin,Warfarin,IV tPA,IVIG,Aspirin
+Which of the following is the most common cause of cerebral amyloid angiopathy?,Hypertension,Advanced age,Diabetes mellitus,Hyperlipidemia,Advanced age
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and blood glucose of 45 mg/dL?,Start aspirin,Administer IV dextrose,Start IV heparin,Administer IV tPA,Administer IV dextrose
+Which of the following is the most common cause of early recurrent stroke after TIA?,Carotid artery stenosis,Hypertension,Diabetes mellitus,Hyperlipidemia,Carotid artery stenosis
+Which of the following is the most appropriate management for a patient with acute stroke and persistent vomiting?,Start oral aspirin,Start IV tPA,Insert nasogastric tube for medication,Wait until vomiting resolves,Insert nasogastric tube for medication
+Which of the following is the most common cause of death in patients with large hemispheric infarction?,Seizure,Brain herniation,Recurrent stroke,Myocardial infarction,Brain herniation
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and fever?,Start IV tPA,Administer acetaminophen,Start IV heparin,Start aspirin,Administer acetaminophen
+Which of the following is the most common site for cerebral embolism to lodge?,Anterior cerebral artery,Middle cerebral artery,Posterior cerebral artery,Basilar artery,Middle cerebral artery
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypertension not eligible for tPA?,Lower BP to <140/90 mmHg,Lower BP only if >220/120 mmHg,Lower BP to <120/80 mmHg,Start IV tPA,Lower BP only if >220/120 mmHg
+Which of the following is the most common cause of stroke in children?,Sickle cell disease,Hypertension,Diabetes mellitus,Hyperlipidemia,Sickle cell disease
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and recent major surgery?,Start IV tPA,Start aspirin,Start IV heparin,Start IV mannitol,Start aspirin
+Which of the following is the most common cause of death in patients with cerebellar infarction?,Hydrocephalus,Brainstem compression,Recurrent stroke,Myocardial infarction,Brainstem compression
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and suspected aspiration?,Start IV tPA,Start oral aspirin,Start IV antibiotics,Start IV heparin,Start IV antibiotics
+Which of the following is the most common cause of stroke in pregnancy?,Hypertension,Cardioembolism,Venous sinus thrombosis,Diabetes mellitus,Venous sinus thrombosis
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and seizure at onset?,Start IV tPA,Start IV phenytoin,Start IV mannitol,Start aspirin,Start IV phenytoin
+Which of the following is the most common cause of death in patients with pontine hemorrhage?,Seizure,Respiratory failure,Recurrent stroke,Myocardial infarction,Respiratory failure
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hyperglycemia?,Start IV tPA,Start IV insulin,Start aspirin,Start IV mannitol,Start IV insulin
+Which of the following is the most common cause of stroke in the elderly?,Atrial fibrillation,Hypertension,Diabetes mellitus,Carotid dissection,Atrial fibrillation
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe anemia?,Start IV tPA,Start IV blood transfusion,Start aspirin,Start IV mannitol,Start IV blood transfusion
+Which of the following is the most common cause of death in patients with thalamic hemorrhage?,Seizure,Brain herniation,Recurrent stroke,Myocardial infarction,Brain herniation
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypokalemia?,Start IV tPA,Start IV potassium replacement,Start aspirin,Start IV mannitol,Start IV potassium replacement
+Which of the following is the most common cause of death in patients with brainstem infarction?,Respiratory failure,Recurrent stroke,Seizure,Myocardial infarction,Respiratory failure
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hyponatremia?,Start IV tPA,Start IV hypertonic saline,Start aspirin,Start IV mannitol,Start IV hypertonic saline
+Which of the following is the most common cause of death in patients with large putaminal hemorrhage?,Seizure,Brain herniation,Recurrent stroke,Myocardial infarction,Brain herniation
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypercalcemia?,Start IV tPA,Start IV fluids and bisphosphonates,Start aspirin,Start IV mannitol,Start IV fluids and bisphosphonates
+Which of the following is the most common cause of death in patients with massive subarachnoid hemorrhage?,Rebleeding,Vasospasm,Hydrocephalus,Seizure,Rebleeding
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypomagnesemia?,Start IV tPA,Start IV magnesium replacement,Start aspirin,Start IV mannitol,Start IV magnesium replacement
+Which of the following is the most common cause of death in patients with massive cerebral infarction?,Brain herniation,Recurrent stroke,Seizure,Myocardial infarction,Brain herniation
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypophosphatemia?,Start IV tPA,Start IV phosphate replacement,Start aspirin,Start IV mannitol,Start IV phosphate replacement
+Which of the following is the most common cause of death in patients with large thalamic hemorrhage?,Seizure,Brain herniation,Recurrent stroke,Myocardial infarction,Brain herniation
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypothermia?,Start IV tPA,Rewarm patient,Start aspirin,Start IV mannitol,Rewarm patient
+Which of the following is the most common cause of death in patients with massive brainstem infarction?,Respiratory failure,Recurrent stroke,Seizure,Myocardial infarction,Respiratory failure
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hyperthermia?,Start IV tPA,Administer acetaminophen and cooling,Start aspirin,Start IV mannitol,Administer acetaminophen and cooling
+Which of the following is the most common cause of death in patients with large cerebellar infarction?,Hydrocephalus,Brainstem compression,Recurrent stroke,Myocardial infarction,Brainstem compression
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypovolemia?,Start IV tPA,Start IV fluids,Start aspirin,Start IV mannitol,Start IV fluids
+Which of the following is the most common cause of death in patients with massive pontine hemorrhage?,Seizure,Respiratory failure,Recurrent stroke,Myocardial infarction,Respiratory failure
+Which of the following is the most appropriate management for a patient with acute ischemic stroke and severe hypervolemia?,Start IV tPA,Restrict fluids,Start aspirin,Start IV mannitol,Restrict fluids
+Which of the following is the most common cause of death in patients with massive thalamic hemorrhage?,Seizure,Brain herniation,Recurrent stroke,Myocardial infarction,Brain herniation

@@ -2,14 +2,12 @@ Question,Option A,Option B,Option C,Option D,Correct Answer
 Which of the following best describes a p-value in hypothesis testing?,The probability the null hypothesis is true,The probability of obtaining a result as extreme as observed if the null hypothesis is true,The probability of Type II error,The probability of a false positive,The probability of obtaining a result as extreme as observed if the null hypothesis is true
 Which measure is most appropriate for central tendency in a highly skewed distribution?,Mean,Median,Mode,Range,Median
 Which of the following is a measure of dispersion?,Mean,Median,Standard deviation,Mode,Standard deviation
-If a test has high sensitivity, what does it minimize?,False positives,False negatives,True positives,True negatives,False negatives
 Which of the following is NOT a type of bias in studies?,Selection bias,Recall bias,Measurement bias,Random error,Random error
 What does the area under the ROC curve represent?,Test specificity,Test sensitivity,Overall test accuracy,Prevalence,Overall test accuracy
 Which statistical test is most appropriate for comparing means of two independent groups?,Chi-square test,Paired t-test,Independent t-test,ANOVA,Independent t-test
 What is the main purpose of randomization in clinical trials?,Increase sample size,Reduce bias,Increase power,Reduce costs,Reduce bias
 Which of the following is a non-parametric test?,Student's t-test,ANOVA,Mann-Whitney U test,Linear regression,Mann-Whitney U test
 The probability of rejecting the null hypothesis when it is true is called:,Type I error,Type II error,Power,Confidence interval,Type I error
-A 95% confidence interval means:,There is a 95% chance the true value lies within the interval,If the study were repeated many times, 95% of intervals would contain the true value,The point estimate is always within the interval,The interval is always symmetric,If the study were repeated many times, 95% of intervals would contain the true value
 Which of the following is a categorical variable?,Height,Weight,Blood group,Age,Blood group
 Which of the following increases statistical power?,Decreasing sample size,Increasing sample size,Increasing p-value,Decreasing effect size,Increasing sample size
 Which of the following is used to assess the association between two categorical variables?,Chi-square test,Student's t-test,Pearson correlation,Linear regression,Chi-square test
@@ -49,7 +47,6 @@ Which of the following is NOT a type of variable?,Nominal,Ordinal,Continuous,Clu
 Which of the following is a feature of a longitudinal study?,Measures exposure and outcome at one point in time,Follows subjects over time,Is always retrospective,Measures prevalence only,Follows subjects over time
 Which of the following is the main purpose of blinding in a clinical trial?,Reduce confounding,Reduce bias,Increase power,Increase sample size,Reduce bias
 Which of the following is the best method to display the relationship between two continuous variables?,Pie chart,Bar chart,Scatter plot,Histogram,Scatter plot
-Which of the following is NOT a feature of a cohort study?,Can measure incidence,Can study rare exposures,Is always retrospective,Can study multiple outcomes,Is always retrospective
 Which of the following is a feature of a case series?,Has a control group,Describes a group of cases,Measures incidence,Is always prospective,Describes a group of cases
 Which of the following is the best measure of central tendency for ordinal data?,Mean,Median,Mode,Range,Median
 Which of the following is NOT a type of error in hypothesis testing?,Type I error,Type II error,Type III error,Type IV error,Type IV error
@@ -60,7 +57,6 @@ Which of the following is the best method to control for confounding in a case-c
 Which of the following is NOT a feature of a systematic review?,Combines results from multiple studies,Is always experimental,Uses explicit methods,Assesses study quality,Is always experimental
 Which of the following is a feature of an ecological study?,Uses group-level data,Uses individual-level data only,Is always prospective,Measures incidence,Uses group-level data
 Which of the following is the best method to display categorical data?,Histogram,Bar chart,Scatter plot,Line graph,Bar chart
-Which of the following is NOT a feature of a cohort study?,Can measure incidence,Can study multiple outcomes,Is always retrospective,Can study rare exposures,Is always retrospective
 Which of the following is a feature of a case-control study?,Can measure incidence,Can study rare diseases,Is always prospective,Can study multiple outcomes,Can study rare diseases
 Which of the following is the best method to reduce selection bias?,Randomization,Increasing sample size,Blinding,Matching,Randomization
 Which of the following is NOT a feature of a randomized controlled trial?,Random allocation,Blinding,Can establish causality,Is always retrospective,Is always retrospective

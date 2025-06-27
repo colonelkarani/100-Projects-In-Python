@@ -1,0 +1,111 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which of the following statements about Python dictionaries is TRUE?,They allow duplicate keys,They are unordered in Python 3.7 and above,They are mutable,They use parentheses for declaration,They are mutable
+What is the correct syntax to access the value associated with the key "model" in the dictionary car = {"brand": "Ford" "model": "Mustang" "year": 1964}?,car.model,car["model"],car(model),car->model,car["model"]
+Which method would you use to remove a key-value pair from a dictionary by key and return its value?,remove(),pop(),discard(),delete(),pop()
+What will be the output of len({1: "a" 2: "b" 3: "c"})?,3,2,1,0,3
+Which of the following is NOT a valid dictionary key?,(1 2),[1 2],"key",42,[1 2]
+How do you add a new key-value pair to an existing dictionary d in Python?,d.add("k" "v"),d["k"] = "v",d.append("k" "v"),add(d "k" "v"),d["k"] = "v"
+What does the update() method do in a Python dictionary?,Updates all values to the same value,Merges another dictionary into the current one,Deletes all items,Sorts the dictionary,Merges another dictionary into the current one
+Which statement about Python sets is FALSE?,Sets are unordered,Sets allow duplicate elements,Sets are mutable,Set elements must be immutable,Sets allow duplicate elements
+How do you create an empty set in Python?,{},[],set(),emptyset(),set()
+Which operation returns the common elements between two sets A and B?,A | B,A & B,A - B,A ^ B,A & B
+What is the result of {"a" "b" "c"} & {"b" "c" "d"}?,{"a" "b" "c" "d"},{"b" "c"},{"a" "d"},set(),{"b" "c"}
+Which method removes all elements from a set?,clear(),remove(),discard(),pop(),clear()
+What happens if you try to access a set element by index?,Returns the element,Raises a KeyError,Raises a TypeError,Returns None,Raises a TypeError
+Which of the following is a valid way to add an element to a set s?,s.add("x"),s.append("x"),s["x"] = True,s.insert("x"),s.add("x")
+What is the output of set([1 2 2 3 4 4 5])?,{1 2 2 3 4 4 5},{1 2 3 4 5},{1 3 5},{2 4},{1 2 3 4 5}
+Which set operation is performed by the ^ operator?,Union,Intersection,Symmetric difference,Subset,Symmetric difference
+Which method checks if two sets have no elements in common?,issubset(),isdisjoint(),issuperset(),difference(),isdisjoint()
+Which method would you use to return a shallow copy of a set?,copy(),clone(),duplicate(),replicate(),copy()
+Which of the following statements about tuples is TRUE?,Tuples are mutable,Tuples are unordered,Tuples allow duplicate elements,Tuples cannot be nested,Tuples allow duplicate elements
+How do you create a tuple with a single element?,(1),(1 ),(1,),tuple(1),(1,)
+Which method returns the number of occurrences of a specified value in a tuple?,count(),index(),find(),search(),count()
+What is the output of len(("a" "b" "c" "a"))?,3,4,2,1,4
+Which method returns the index of the first occurrence of a value in a tuple?,find(),index(),search(),locate(),index()
+What is the result of ("a" "b") + ("c" "d")?,("a" "b" "c" "d"),("a" "b" "d"),("a" "c" "b" "d"),("a" "b")("c" "d"),("a" "b" "c" "d")
+Which of the following will raise an error when used on a tuple t = (1 2 3)?,t.count(2),t.index(3),t=5,t,t=5
+Which function converts a list [1 2 3] into a tuple?,tuple([1 2 3]),list([1 2 3]),set([1 2 3]),dict([1 2 3]),tuple([1 2 3])
+What is the output of (1 2 3) * 2?,(1 2 3 1 2 3),(1 2 3 2),(2 1 2 3),(1 2 3 3 2 1),(1 2 3 1 2 3)
+Which of the following statements about tuple immutability is correct?,You can add elements to a tuple,You can change elements in a tuple,You can delete elements from a tuple,You cannot change elements in a tuple,You cannot change elements in a tuple
+Which function returns the largest value in a tuple t = (1 5 3)?,max(t),largest(t),top(t),biggest(t),max(t)
+Which of the following is a valid tuple declaration?,tuple = [1 2 3],tuple = (1 2 3),tuple = {1 2 3},tuple = <1 2 3>,tuple = (1 2 3)
+Which function can be used to sort the elements of a tuple?,sort(),sorted(),order(),arrange(),sorted()
+Which of the following is NOT a valid way to create a dictionary?,dict([("a" 1) ("b" 2)]),{"a": 1 "b": 2},dict(a=1 b=2),dict(["a" 1] ["b" 2]),dict(["a" 1] ["b" 2])
+What does the get() method of a dictionary return if the key is not found and no default is provided?,None,0,"",Raises KeyError,None
+Which of the following statements about set comprehensions is TRUE?,They can only create sets of integers,They always return a list,They can include conditions,They require parentheses,They can include conditions
+How can you check if a key exists in a dictionary d?,d.has_key("k"),"k" in d,d.contains("k"),d.exists("k"),"k" in d
+Which of the following will remove all items from a dictionary d?,d.clear(),d.remove(),d.pop(),del d,d.clear()
+What is the output of {1 2 3} | {3 4 5}?,{1 2 3 4 5},{3},{1 2 3},{4 5},{1 2 3 4 5}
+Which of the following set methods returns a new set containing elements present in either set but not both?,union(),intersection(),symmetric_difference(),difference(),symmetric_difference()
+Which of the following is NOT a valid tuple operation?,Concatenation,Replication,Element assignment,Indexing,Element assignment
+What is the result of dict(zip(["a" "b"] [1 2]))?,{"a": 1 "b": 2},{"a": 2 "b": 1},{"b": 1 "a": 2},{"a": 1},{"a": 1 "b": 2}
+Which of the following is TRUE about the difference between lists and tuples?,Lists are immutable tuples are mutable,Lists are mutable tuples are immutable,Both are immutable,Both are mutable,Lists are mutable tuples are immutable
+What is the output of {1 2 3}.issubset({1 2 3 4})?,True,False,None,Error,True
+Which of the following is a valid way to iterate over dictionary keys?,for key in d: ...,for key in d.keys(): ...,for key value in d.items(): ...,Both A and B,Both A and B
+What is the result of del d["key"] if "key" does not exist in d?,Deletes nothing,Raises KeyError,Returns None,Deletes all items,Raises KeyError
+Which of the following statements about sets is FALSE?,Sets are unordered,Sets allow duplicate elements,Set elements must be immutable,Sets can be iterated,Sets allow duplicate elements
+Which method is used to return the value for a given key if the key is in the dictionary otherwise a default value?,get(),find(),lookup(),search(),get()
+What is the output of tuple("abc")?,("a" "b" "c"),["a" "b" "c"],{"a" "b" "c"},("abc"),("a" "b" "c")
+Which of the following is NOT a valid way to create a set?,set([1 2 3]),{1 2 3},set(),{[1 2 3]},{[1 2 3]}
+Which of the following methods can be used to safely remove an element from a set without raising an error if the element does not exist?,remove(),discard(),pop(),clear(),discard()
+What will be the result of the following code: s = {1 2 3} s.add(2),s becomes {1 2 3 2},s becomes {1 2 3},s becomes {2 3},Error,s becomes {1 2 3}
+Which of the following is a property of Python dictionaries?,They allow duplicate keys,Keys must be immutable,They are indexed by position,They are immutable,Keys must be immutable
+What is the output of ("a" "b" "c").index("b")?,1,0,2,Error,1
+Which of the following can be used as a key in a Python dictionary?,A list,A set,A tuple,Another dictionary,A tuple
+Which of the following will raise an error?,set("abc"),{"a" "b" "c"},set([1 2 3]),{[1 2 3]},{[1 2 3]}
+Which of the following set operations returns a set with elements in either set but not both?,union(),intersection(),symmetric_difference(),difference(),symmetric_difference()
+Which of the following is NOT a valid tuple method?,count(),index(),append(),len(),append()
+Which of the following will create a tuple of length 0?,tuple(),(),( None ),(0),tuple()
+Which of the following is NOT a valid way to create a dictionary?,dict([("a" 1) ("b" 2)]),{"a": 1 "b": 2},dict(a=1 b=2),dict(["a" 1] ["b" 2]),dict(["a" 1] ["b" 2])
+Which of the following statements about dictionary keys is FALSE?,Keys must be unique,Keys must be immutable,Keys can be of any type,Keys are case-sensitive,Keys can be of any type
+Which of the following is NOT a valid set operation?,union(),intersection(),difference(),append(),append()
+Which of the following statements about tuples is TRUE?,Tuples are mutable,Tuples are ordered,Tuples do not allow duplicates,Tuples are unindexed,Tuples are ordered
+Which of the following is used to iterate over both keys and values in a dictionary?,d.items(),d.keys(),d.values(),d.pairs(),d.items()
+What is the output of {1 2 3} - {2 3 4}?,{1},{2 3},{4},{1 4},{1}
+Which of the following is NOT a valid use of the set() constructor?,set("abc"),set([1 2 3]),set({1 2 3}),set(1 2 3),set(1 2 3)
+What is the output of (1 2 3).count(2)?,1,2,0,Error,1
+Which of the following is NOT a valid dictionary method?,update(),copy(),append(),pop(),append()
+Which of the following is NOT allowed in a set?,Duplicate elements,Immutable elements,Integers,Strings,Duplicate elements
+Which of the following is NOT a property of Python tuples?,Tuples are immutable,Tuples are ordered,Tuples allow duplicates,Tuples are indexed by keys,Tuples are indexed by keys
+Which of the following methods updates a set with the union of itself and others?,update(),union(),add(),extend(),update()
+Which of the following is NOT a valid way to declare a tuple?,(1 2 3),tuple([1 2 3]),(),(1,),(),(1 2 3)
+Which of the following is a correct way to check if a value exists in a tuple t?,if "x" in t,if t["x"],if t.has("x"),if t.exists("x"),if "x" in t
+Which of the following will raise a KeyError?,d.get("x"),d["x"],d.pop("x" None),d.clear(),d["x"]
+Which of the following is NOT a valid dictionary operation?,Access by key,Access by index,Update value,Remove item,Access by index
+Which of the following is a property of sets in Python?,They allow duplicate elements,They are ordered,They are indexed,They are mutable,They are mutable
+Which of the following will return the number of items in a dictionary d?,d.count(),len(d),d.size(),d.length(),len(d)
+Which of the following is a correct way to remove a key-value pair from a dictionary?,d.pop("k"),d.remove("k"),d.delete("k"),d.clear("k"),d.pop("k")
+Which of the following is NOT a valid tuple operation?,Indexing,Concatenation,Element assignment,Replication,Element assignment
+Which of the following statements about set elements is TRUE?,Set elements must be mutable,Set elements must be immutable,Set elements can be lists,Set elements can be dictionaries,Set elements must be immutable
+Which of the following is a correct way to create a set from a list l?,set(l),set[l],set{l},set(l[]),set(l)
+What is the output of {1 2 3}.union({3 4 5})?,{1 2 3 4 5},{3},{1 2 3},{4 5},{1 2 3 4 5}
+Which of the following is a property of tuples?,They are mutable,They are indexed,They do not allow duplicates,They are unordered,They are indexed
+Which of the following will return a sorted list from a set s?,s.sort(),sorted(s),s.ordered(),order(s),sorted(s)
+Which of the following is a valid way to create a dictionary from two lists keys and values?,dict(zip(keys values)),dict(keys values),dict(keys=values),dict(keys values=),dict(zip(keys values))
+Which of the following statements about dictionary values is TRUE?,Values must be unique,Values can be mutable,Values must be integers,Values must be strings,Values can be mutable
+Which of the following is NOT a valid way to iterate over a tuple t?,for x in t,for i in range(len(t)),while t,for x of t,for x of t
+Which of the following is NOT a valid set method?,add(),union(),append(),intersection(),append()
+Which of the following is a correct way to remove all elements from a set s?,s.clear(),s.remove(),s.pop(),del s,s.clear()
+Which of the following is a property of dictionaries?,They are ordered in Python 3.7+,They allow duplicate keys,They are immutable,They are indexed by position,They are ordered in Python 3.7+
+Which of the following is a correct way to create a tuple from a string s?,tuple(s),tuple[s],tuple{s},tuple(s[]),tuple(s)
+Which of the following is a valid set comprehension?,{x for x in range(5) if x % 2 == 0},{x x in range(5) if x % 2 == 0},{x for x in range(5) x % 2 == 0},{x if x % 2 == 0 for x in range(5)},{x for x in range(5) if x % 2 == 0}
+Which of the following is NOT a valid dictionary method?,get(),items(),keys(),add(),add()
+Which of the following will create a set with a single element "a"?,{"a"},set("a"),set(["a"]),Both A and C,Both A and C
+Which of the following is NOT a valid tuple method?,count(),index(),append(),len(),append()
+Which of the following is a valid way to check if a set s is a superset of another set t?,s.issuperset(t),s.superset(t),s.is_superset(t),s.superset_of(t),s.issuperset(t)
+Which of the following is NOT a valid way to create a set?,set([1 2 3]),{1 2 3},set(),set(1 2 3),set(1 2 3)
+Which of the following is a valid way to access the second element of a tuple t = (1 2 3)?,t,t,t,t,t
+Which of the following is NOT a valid dictionary method?,values(),items(),append(),pop(),append"
+Which of the following is a valid way to check if a set s is a subset of another set t?,s.issubset(t),s.subset(t),s.is_subset(t),s.subset_of(t),s.issubset(t)
+Which of the following is NOT a valid tuple operation?,Indexing,Concatenation,Replication,Element assignment,Element assignment
+Which of the following is a correct way to remove an item from a set s?,s.remove(x),s.delete(x),s.pop(x),s.clear(x),s.remove(x)
+Which of the following is NOT a valid dictionary operation?,Access by key,Access by index,Remove item,Update value,Access by index
+Which of the following is a property of sets?,They are mutable,They allow duplicate elements,They are ordered,They are indexed,They are mutable
+Which of the following is NOT a valid way to create a tuple?,(1 2 3),tuple([1 2 3]),(),(1,),(),(1 2 3)
+Which of the following is a valid way to check if an element exists in a set s?,"x" in s,s["x"],s.has("x"),s.exists("x"),"x" in s
+Which of the following is NOT a valid dictionary method?,get(),update(),append(),pop(),append"
+Which of the following is a valid way to iterate over set elements?,for x in s,for x of s,for x in s.keys(),for x in s.values(),for x in s
+Which of the following is NOT a valid tuple method?,count(),index(),append(),len(),append"
+Which of the following is a property of tuples?,They are immutable,They allow duplicate elements,They are ordered,All of the above,All of the above
+Which of the following is NOT a valid set operation?,union(),intersection(),difference(),append(),append"
+Which of the following is a correct way to create a dictionary with string keys and integer values?,{"a": 1 "b": 2},dict(a=1 b=2),dict([("a" 1) ("b" 2)]),All of the above,All of the above

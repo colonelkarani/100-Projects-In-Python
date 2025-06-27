@@ -1,0 +1,109 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which Python module is primarily used for reading and writing CSV files?,os,csv,json,sys,csv
+When opening a CSV file for writing with the csv module what value should newline be set to?,None,'\n','',False,''
+What does the csv.reader() function return?,A list of rows,A file object,A reader object,An iterator of dictionaries,A reader object
+Which method is used to write a single row to a CSV file using csv.writer?,write(),write_row(),writerow(),writerows(),writerow()
+What parameter in open() specifies the file encoding when reading a CSV file?,mode,encoding,delimiter,quotechar,encoding
+What does csv.DictReader return for each row?,A list,A tuple,A dictionary,A string,A dictionary
+Which argument in csv.writer controls how fields are quoted?,delimiter,quotechar,quoting,escapechar,quoting
+Which constant makes csv.writer quote all fields?,csv.QUOTE_MINIMAL,csv.QUOTE_ALL,csv.QUOTE_NONNUMERIC,csv.QUOTE_NONE,csv.QUOTE_ALL
+How do you skip the header row when reading a CSV file with csv.reader?,Use next(reader),Use reader.skipheader(),Set header=False,Use reader.header(),Use next(reader)
+What happens if you try to read a non-existent CSV file?,Returns empty list,Raises FileNotFoundError,Returns None,Creates a new file,Raises FileNotFoundError
+Which method writes multiple rows at once with csv.writer?,writerow(),writerows(),writelines(),writeall(),writerows()
+What does the delimiter parameter in csv.reader() control?,Row separator,Column separator,File encoding,Quote character,Column separator
+How do you specify a custom delimiter when reading a CSV file?,delimiter=',' ,delimiter=';',quotechar=';',dialect='excel',delimiter=';'
+What does csv.QUOTE_NONE do?,Quotes all fields,Quotes only fields with special characters,Never quotes fields,Quotes only non-numeric fields,Never quotes fields
+Which exception is raised by the csv module on error?,IOError,csv.Error,ValueError,FileNotFoundError,csv.Error
+How do you read a CSV file as a list of dictionaries?,csv.reader(),csv.DictReader(),csv.read_dict(),csv.DictWriter(),csv.DictReader()
+What does the fieldnames parameter in csv.DictWriter specify?,Row values,Column names,File name,Encoding,Column names
+Which pandas function reads a CSV file into a DataFrame?,pandas.read(),pandas.read_csv(),pandas.csv_read(),pandas.DataFrame(),pandas.read_csv()
+What does the quotechar parameter in csv.writer() specify?,Comment character,Escape character,Field quote character,Row separator,Field quote character
+How do you write a CSV file using pandas?,to_csv(),write_csv(),save_csv(),csv_write(),to_csv()
+What is the default delimiter used by csv.reader()?,Tab,Comma,Semicolon,Space,Comma
+Which parameter in open() should be set to avoid extra blank lines when writing CSV files?,buffering,newline='',encoding,mode,newline=''
+How do you handle missing keys in csv.DictWriter?,restval,extrasaction,missingkey,default,restval
+What does csv.Sniffer().sniff() do?,Detects encoding,Detects delimiter,Detects file size,Detects line endings,Detects delimiter
+Which method is used to register a new CSV dialect?,csv.register(),csv.register_dialect(),csv.add_dialect(),csv.dialect(),csv.register_dialect()
+How do you ignore extra keys in a dictionary when using csv.DictWriter?,extrasaction='raise',extrasaction='ignore',restval='ignore',ignore_extra=True,extrasaction='ignore'
+What is the default value of quoting in csv.writer?,csv.QUOTE_NONE,csv.QUOTE_ALL,csv.QUOTE_MINIMAL,csv.QUOTE_NONNUMERIC,csv.QUOTE_MINIMAL
+Which csv.writer parameter controls the character used to escape the delimiter?,escapechar,quotechar,quoting,delimiter,escapechar
+How do you read a CSV file with a semicolon as the delimiter?,delimiter=':',delimiter=';',delimiter='|',delimiter=',',delimiter=';'
+What does csv.QUOTE_NONNUMERIC do?,Quotes all fields,Quotes only numeric fields,Quotes non-numeric fields and converts others to float,Never quotes fields,Quotes non-numeric fields and converts others to float
+Which pandas parameter sets the index column when reading CSV?,index_col,header,parse_dates,delimiter,index_col
+How do you write a header row using csv.writer?,writer.writeheader(),writer.writerow(header),writer.write_row(header),writer.header(header),writer.writerow(header)
+What does the next() function do when used with a CSV reader?,Reads all rows,Skips a row,Reads the next row,Closes the file,Reads the next row
+Which method is used to close a file in Python?,closefile(),end(),close(),finish(),close()
+What is the result of iterating over a csv.reader object?,Rows as lists,Rows as dicts,Rows as strings,Rows as tuples,Rows as lists
+How do you specify the line terminator in csv.writer?,lineterminator,delimiter,quotechar,quoting,lineterminator
+What does csv.DictWriter require as an argument?,fieldnames,delimiter,quotechar,encoding,fieldnames
+How do you read only specific columns from a CSV using pandas?,usecols,columns,fields,select,usecols
+Which csv module function is used to read CSV data from a string?,csv.reader(),csv.DictReader(),csv.reader with a list,read_csv(),csv.reader with a list
+What is the default quote character in csv.reader?,',",|,`,"
+How do you append data to an existing CSV file?,mode='a',mode='w',mode='r',mode='x',mode='a'
+Which method in pandas writes a DataFrame to CSV?,write_csv(),to_csv(),save_csv(),DataFrame.to_csv(),to_csv()
+How do you handle errors while reading a CSV file in Python?,try-except,if-else,while loop,with statement,try-except
+Which csv.writer parameter specifies the string used to quote fields?,quotechar,delimiter,quoting,escapechar,quotechar
+How do you convert a CSV file to JSON in Python?,csv.reader(),csv.DictReader + json.dump(),csv.writer(),os.convert(),csv.DictReader + json.dump()
+What does the csv.Sniffer().has_header() method do?,Checks for delimiter,Checks for header row,Checks for encoding,Checks for missing values,Checks for header row
+Which method writes a dictionary as a row in csv.DictWriter?,writerow(),writerows(),write_dict(),write(),writerow()
+How do you specify that all string fields should be quoted in Python 3.12+?,quoting=csv.QUOTE_ALL,quoting=csv.QUOTE_STRINGS,quoting=csv.QUOTE_MINIMAL,quoting=csv.QUOTE_NONNUMERIC,quoting=csv.QUOTE_STRINGS
+What does the restval parameter in csv.DictWriter do?,Ignores missing keys,Specifies value for missing keys,Specifies delimiter,Specifies quote character,Specifies value for missing keys
+What happens if a dictionary passed to csv.DictWriter has extra keys and extrasaction is 'raise'?,Ignores them,Raises an error,Removes them,Quotes them,Raises an error
+How do you specify the encoding when opening a CSV file?,encoding='utf-8',delimiter='utf-8',mode='utf-8',quotechar='utf-8',encoding='utf-8'
+Which pandas parameter parses dates in a CSV file?,parse_dates,date_parser,parse,dates,parse_dates
+How do you specify no quoting in csv.writer?,quoting=csv.QUOTE_NONE,quoting=csv.QUOTE_ALL,quoting=csv.QUOTE_MINIMAL,quoting=csv.QUOTE_NONNUMERIC,quoting=csv.QUOTE_NONE
+What does the csv.Error exception indicate?,File not found,CSV parsing error,IO error,Type error,CSV parsing error
+How do you read a CSV file line by line in Python?,for row in reader,reader.next(),reader.readline(),reader.read(),for row in reader
+Which csv.writer parameter specifies the delimiter character?,delimiter,quotechar,quoting,escapechar,delimiter
+How do you set a custom dialect in csv.reader?,csv.register_dialect(),csv.set_dialect(),dialect=custom,csv.dialect(),csv.register_dialect()
+Which pandas function writes a DataFrame to a CSV file?,DataFrame.write(),DataFrame.to_csv(),write_csv(),to_csv(),DataFrame.to_csv()
+How do you read a CSV file without headers using pandas?,header=None,header=0,header=1,header='infer',header=None
+Which csv.reader parameter specifies how to handle quoting?,quoting,delimiter,quotechar,escapechar,quoting
+What does the extrasaction parameter in csv.DictWriter control?,Missing keys,Extra keys,Delimiter,Encoding,Extra keys
+How do you specify the default value for missing columns in csv.DictWriter?,restval,default,missing,fill,restval
+What is the purpose of the csv.Sniffer class?,Detects file structure,Reads CSV files,Writes CSV files,Handles errors,Detects file structure
+How do you read a CSV file as a list of lists?,csv.reader(),csv.DictReader(),csv.writer(),csv.Sniffer(),csv.reader()
+What does the writerows() method in csv.writer() do?,Writes a single row,Writes multiple rows,Reads all rows,Deletes rows,Writes multiple rows
+How do you specify the quote character in csv.writer?,quotechar,delimiter,quoting,escapechar,quotechar
+Which pandas parameter sets the column names when reading a CSV file?,names,columns,header,fields,names
+How do you check if a CSV file has a header using csv.Sniffer?,has_header(),check_header(),header_exists(),header(),has_header()
+What is the default value of the quotechar parameter in csv.writer?,',",|,;,"
+How do you write a list of lists to a CSV file?,writerows(),writerow(),writelines(),writeall(),writerows()
+Which csv.writer parameter specifies the line ending character?,lineterminator,delimiter,quotechar,quoting,lineterminator
+How do you read a CSV file with a tab delimiter?,delimiter='\t',delimiter=' ',delimiter=',',delimiter=';',delimiter='\t'
+How do you specify the file mode for reading a CSV file?,mode='r',mode='w',mode='a',mode='x',mode='r'
+What does the csv.DictWriter.writeheader() method do?,Writes a header row,Writes all rows,Deletes header,Reads header,Writes a header row
+How do you convert a JSON file to CSV in Python?,json.load() + csv.DictWriter(),csv.reader(),os.convert(),pandas.read_json(),json.load() + csv.DictWriter()
+How do you specify that all non-null fields should be quoted in Python 3.12+?,quoting=csv.QUOTE_NOTNULL,quoting=csv.QUOTE_STRINGS,quoting=csv.QUOTE_ALL,quoting=csv.QUOTE_NONE,quoting=csv.QUOTE_NOTNULL
+What does the escapechar parameter in csv.writer() specify?,Escape character,Quote character,Delimiter,Line ending,Escape character
+Which pandas function reads a CSV file without parsing dates?,read_csv(),read_csv(parse_dates=False),read_table(),read(),read_csv()
+How do you specify the separator in pandas.read_csv()?,sep,delimiter,quotechar,quoting,sep
+How do you append a row to a CSV file in Python?,open with mode='a',open with mode='w',open with mode='r',open with mode='x',open with mode='a'
+What is the main advantage of using the csv module over manual string splitting?,Performance,Error handling,Handles quoting and delimiters,Speed,Handles quoting and delimiters
+How do you specify the fieldnames when using csv.DictWriter?,fieldnames parameter,header parameter,columns parameter,fields parameter,fieldnames parameter
+What does the dialect parameter in csv.reader() specify?,CSV format details,File encoding,Row separator,Quote character,CSV format details
+How do you read a CSV file from a URL using pandas?,read_csv(url),read(url),open(url),csv.reader(url),read_csv(url)
+Which csv.writer parameter specifies how to escape the delimiter?,escapechar,delimiter,quotechar,quoting,escapechar
+How do you process large CSV files efficiently in Python?,Read all at once,Read line by line,Load into memory,Use json,Read line by line
+What does the quoting parameter in csv.writer() control?,When fields are quoted,Row separator,Delimiter,Encoding,When fields are quoted
+How do you specify a custom header when reading a CSV with pandas?,names parameter,header parameter,columns parameter,fieldnames parameter,names parameter
+Which method in csv.DictWriter writes multiple rows?,writerows(),writerow(),write_dict(),write(),writerows()
+How do you specify the default value for missing fields in csv.DictWriter?,restval,default,missing,fill,restval
+What is the default dialect used by the csv module?,excel,unix,custom,default,excel
+How do you write a CSV file with a custom delimiter?,delimiter parameter,quotechar parameter,quoting parameter,escapechar parameter,delimiter parameter
+How do you check the number of lines read by csv.reader?,reader.line_num,reader.count,reader.length,reader.rows,reader.line_num
+How do you specify the character used for quoting fields in csv.DictWriter?,quotechar,delimiter,quoting,escapechar,quotechar
+How do you specify a custom line terminator in csv.writer?,lineterminator parameter,delimiter parameter,quotechar parameter,quoting parameter,lineterminator parameter
+Which pandas function reads a CSV file with a specific delimiter?,read_csv(sep=...),read_table(),read(),read_csv(),read_csv(sep=...)
+How do you handle CSV files with missing data in pandas?,fillna(),dropna(),replace(),all of the above,all of the above
+How do you specify the quoting style in csv.writer?,quoting parameter,quotechar parameter,delimiter parameter,escapechar parameter,quoting parameter
+What does csv.QUOTE_MINIMAL do?,Quotes all fields,Quotes only fields with special characters,Never quotes fields,Quotes only numeric fields,Quotes only fields with special characters
+How do you specify the encoding when writing a CSV file?,encoding parameter,delimiter parameter,quotechar parameter,quoting parameter,encoding parameter
+How do you read a CSV file as a list of tuples?,csv.reader() + tuple(),csv.DictReader(),csv.writer(),csv.Sniffer(),csv.reader() + tuple()
+How do you specify the default value for missing data in pandas.read_csv()?,na_values,default,fillna,missing,na_values
+How do you write a CSV file with pandas without the index column?,index=False,header=False,columns=None,skip_index=True,index=False
+How do you read a CSV file with no header using pandas?,header=None,header=0,header=1,header='infer',header=None
+How do you write a CSV file with a custom header using pandas?,columns parameter,header parameter,header=custom_header,columns=custom_header,header parameter
+How do you specify the quote character in pandas.to_csv()?,quotechar parameter,quoting parameter,delimiter parameter,escapechar parameter,quotechar parameter
+How do you specify the delimiter in pandas.to_csv()?,sep parameter,delimiter parameter,quotechar parameter,quoting parameter,sep parameter
+How do you read a CSV file with a specific encoding in pandas?,encoding parameter,delimiter parameter,quotechar parameter,quoting parameter,encoding parameter

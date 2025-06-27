@@ -1,7 +1,6 @@
 Question,Option A,Option B,Option C,Option D,Correct Answer
 Which method is used in Mongoose to create a new document in a collection?,insert,save,create,add,create
 What does the populate() method in Mongoose do?,Deletes a document,Updates a document,Fetches related documents via references,Validates schema,Fetches related documents via references
-In Mongoose, which function is used to define a schema?,defineSchema(),Schema(),MongooseSchema(),createSchema(),Schema()
 Which of the following is NOT a valid Mongoose schema type?,String,Number,Date,Float,Float
 How do you connect Mongoose to a MongoDB database?,mongoose.connect(),mongoose.attach(),mongoose.start(),mongoose.open(),mongoose.connect()
 What is the default promise library used by Mongoose as of version 5.x?,Bluebird,Native ES6 Promises,Q,async,Native ES6 Promises
@@ -12,12 +11,9 @@ What is the purpose of the lean() method in Mongoose?,Returns plain JS objects,O
 Which Mongoose method is used to delete multiple documents?,delete(),deleteMany(),removeAll(),drop(),deleteMany()
 How do you handle validation errors in Mongoose?,By using error middleware,By using try-catch,By using callbacks,All of the above,All of the above
 Which method in Mongoose is used to find a document by its _id?,findById(),findOneById(),getById(),find(),findById()
-How do you define a reference to another model in a Mongoose schema?,type:Schema.Types.ObjectId ref:'Model',type:String,ref:'Model',type:Reference,ref:Schema, type:Schema.Types.ObjectId ref:'Model'
 What does the toObject() method do in Mongoose?,Converts a document to a plain JS object,Converts a document to a string,Converts a document to JSON,Deletes the document,Converts a document to a plain JS object
 Which method is used to perform aggregation in Mongoose?,aggregate(),groupBy(),sum(),pipeline(),aggregate()
-What is the default port for MongoDB?,27017,3306,5432,8080,27017
 Which of the following is NOT a valid Mongoose middleware hook?,pre,post,after,init,after
-In Mongoose, what does the unique property in a schema do?,Ensures unique values at the MongoDB level,Ensures unique values at the schema level,Throws error on duplicate insert,All of the above,Ensures unique values at the MongoDB level
 Which method is used to remove a document instance in Mongoose?,delete(),remove(),deleteOne(),drop(),remove()
 How do you specify a default value in a Mongoose schema?,default: value,defaultValue: value,defaultVal: value,def: value,default: value
 What does the exec() method do in Mongoose?,Executes a query,Exports a model,Exits the process,Executes middleware,Executes a query
@@ -35,7 +31,6 @@ Which syntax is used for outputting unescaped content in EJS?,<%- %>,<%= %>,<% %
 How do you include a partial in an EJS template?,<%- include('partial') %>,<% include('partial') %>,<% partial('partial') %>,<%- partial('partial') %>,<%- include('partial') %>
 Which method is used in Express to set the view engine to EJS?,app.set('view engine' 'ejs'),app.engine('ejs'),app.use('ejs'),app.view('ejs'),app.set('view engine' 'ejs')
 What is the default directory for EJS templates in Express?,views,templates,ejs,public,views
-In EJS, which tag is used for JavaScript logic without output?,<% %>,<%= %>,<%- %>,{{ }},<% %>
 How can you loop through an array in EJS?,<% for(var i=0; i<arr.length; i++){ %> ... <% } %>,<%= for ... %>,<%- for ... %>,{{ for ... }},<% for(var i=0; i<arr.length; i++){ %> ... <% } %>
 Which of the following is NOT a feature of EJS?,Supports template inheritance,Supports partials,Supports plain JS in templates,Supports CSS preprocessing,Supports CSS preprocessing
 How do you comment in EJS templates?,<%# comment %>,<!-- comment -->,## comment,<%-- comment --%>,<%# comment %>
@@ -58,11 +53,9 @@ What does the limit() method do in Mongoose?,Limits the number of documents retu
 Which of the following is NOT a valid Mongoose document method?,save(),update(),remove(),add(),add()
 How do you handle errors in EJS templates?,With try-catch in JS,With error blocks,By passing error to the template,All of the above,By passing error to the template
 Which of the following is true about EJS?,It is synchronous,It is asynchronous,It can be both,It is a database,It can be both
-Which of the following is NOT a valid way to install EJS?,npm install ejs,yarn add ejs,npm get ejs,npm i ejs,npm get ejs
 What is the use of the renderFile() method in EJS?,Renders an EJS file,Deletes a file,Compiles a file,Reads a file,Renders an EJS file
 Which of the following is NOT a valid EJS feature?,Template inheritance,Includes,Plain JS,Database queries,Database queries
 How do you specify a custom views directory in Express?,app.set('views' path),app.views(path),app.use('views' path),app.viewDir(path),app.set('views' path)
-In Mongoose, what is the use of the validate() method?,Runs schema validators,Creates a new document,Deletes a document,Finds a document,Runs schema validators
 Which of the following is NOT a valid EJS variable?,locals,include,partial,template,partial
 What is the use of the model() function in Mongoose?,Defines a model,Defines a schema,Defines a connection,Defines a template,Defines a model
 Which of the following is true about embedded documents in Mongoose?,They are subdocuments,They are separate collections,They are always required,They are only for arrays,They are subdocuments
@@ -75,13 +68,10 @@ Which of the following is NOT a valid EJS file extension?,.ejs,.html,.js,.tpl,.j
 How do you set EJS as the view engine in Express?,app.set('view engine' 'ejs'),app.engine('ejs'),app.use('ejs'),app.view('ejs'),app.set('view engine' 'ejs')
 How do you render a template with variables in EJS?,res.render('template' {key:value}),res.render('template'),res.send('template'),res.ejs('template'),res.render('template' {key:value})
 Which of the following is NOT a valid way to include partials in EJS?,<%- include('partial') %>,<% include('partial') %>,<%- partial('partial') %>,<%- include('partial') %>,<%- partial('partial') %>
-What is the use of the findByIdAndDelete() method in Mongoose?,Finds by id and deletes,Finds by id and updates,Finds by id and creates,Finds by id and removes,Finds by id and deletes
 Which of the following is NOT a valid EJS syntax?,<% %>,<%= %>,<%- %>,<%-- %>,<%-- %>
-How do you pass an array to an EJS template?,As a variable in res.render,As a global variable,As a session variable,As a query string,As a variable in res.render
 Which of the following is NOT a valid Mongoose schema type?,String,Number,Boolean,ArrayList,ArrayList
 How do you use a custom helper in EJS?,Pass it in locals,Define in template,Import in template,Use as global,Pass it in locals
 Which of the following is NOT a valid Mongoose query method?,find(),findOne(),findById(),findByName(),findByName()
-What is the use of the updateMany() method in Mongoose?,Updates multiple documents,Updates a single document,Deletes multiple documents,Deletes a single document,Updates multiple documents
 How do you specify a minimum value for a Number in Mongoose schema?,min: value,minValue: value,minimum: value,minVal: value,min: value
 How do you specify a maximum value for a Number in Mongoose schema?,max: value,maxValue: value,maximum: value,maxVal: value,max: value
 What is the use of the required validator in Mongoose?,Makes a field mandatory,Makes a field optional,Removes a field,Makes a field unique,Makes a field mandatory
@@ -91,7 +81,6 @@ What is the use of the findOne() method in Mongoose?,Finds a single document,Fin
 How do you specify a default value for a field in Mongoose?,default: value,defaultValue: value,def: value,defaultVal: value,default: value
 Which of the following is NOT a valid EJS delimiter?,<% %>,<%= %>,<%- %>,<%% %>,<%% %>
 How do you use a layout in EJS?,With express-ejs-layouts,With ejs-layouts,With express-layouts,With ejs-templates,With express-ejs-layouts
-What is the use of the findByIdAndUpdate() method in Mongoose?,Finds by id and updates,Finds by id and deletes,Finds by id and creates,Finds by id and removes,Finds by id and updates
 How do you specify a sparse index in Mongoose?,sparse: true,sparseIndex: true,sparse: 1,sparseVal: true,sparse: true
 How do you specify a unique index in Mongoose?,unique: true,uniqueIndex: true,unique: 1,uniqueVal: true,unique: true
 Which of the following is NOT a valid way to use EJS?,With Express,With Koa,With vanilla Node.js,With PHP,With PHP

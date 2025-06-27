@@ -7,12 +7,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 api_key = os.getenv("API_KEY")
-file = input(f"What files do you want to study today? \n  Available files:{os.listdir("./csv")}:      ")
+
+def get_topics():
+    topics = os.listdir("./csv")
+    return "\n".join(topics)
+
+def get_files(folder):
+    files = os.listdir("./csv/" + folder)
+    return "\n".join(files)
+
+folder = input(f"What topic do you want to learn today? \nAvailable topics:   \n{get_topics()}\n")
+file = input(f"\n\nWhat files do you want to study today? \nAvailable files:   \n{get_files(folder)}\n   ")
 # Read CSV file with error handling
 try:
-    df = pd.read_csv("./csv/"+file)
+    df = pd.read_csv("./csv/"+ folder+"/"+file)
 except pd.errors.ParserError:
-    df = pd.read_csv("./csv/"+file, on_bad_lines='skip', engine='python')
+    df = pd.read_csv("./csv/"+folder +"/"+file, on_bad_lines='skip', engine='python')
 
 # Ensure we have enough valid questions
 valid_indices = [i for i in range(len(df)) if not df.iloc[i].isnull().any()]
@@ -25,7 +35,7 @@ if total_questions == 0:
 # Get user input with validation
 while True:
     try:
-        number_of_questions = int(input("How many questions do you want to learn today?  ------>   "))
+        number_of_questions = int(input("How many questions do you want to learn today? \n"))
         if 1 <= number_of_questions <= total_questions:
             break
         print(f"Please enter a number between 1 and {total_questions}")
@@ -54,13 +64,22 @@ for idx in selected_indices:
         print(f"{letter}: {option}")
 
     while True:
-        user_letter = input("What's your answer? (A/B/C/D) ").upper()
-        if user_letter in choices:
+        user_letter = input("What's your answer? (A/B/C/D)\nType delete to delete this question\n ").upper().strip()
+        if user_letter == "DELETE":
+            df = df[df['Question'] != question]
+            df.to_csv("./csv/"+ folder+"/"+file, index=False)
+            print("Question deleted")
+            user_answer = 0
+            break
+        elif user_letter in choices:
             user_answer = choices[user_letter]
             break
         print("Invalid choice. Please enter A, B, C, or D.")
 
-    if user_answer == ans:
+
+    if user_answer == 0:
+        continue
+    elif user_answer == ans:
         passed += 1
         streak += 1
         print(f"\n✅ Correct! (Streak: {'🔥' * streak})")

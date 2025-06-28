@@ -32,27 +32,27 @@ class Patient:
 
 
 
-john = Patient("John Doe", 30)
-john_blood_test = BloodTest()
-john_urine_test = UrineTest()   
-john_electrolyte_test = ElectrolyteTest()
-john_electrolyte_test.add_result( "Sodium (mmol/L)", 138)
-john_urine_test.add_result("Color", "Pale Yellow")
-john_urine_test.add_result("Appearance", "Clear")
-john_blood_test.add_result("Hemoglobin (g/dL)", 15.5)
-john_blood_test.add_result("White Blood Cells (thousand/uL)", 7.2)
-john.add_lab(john_blood_test)
-john.add_lab(john_urine_test)
-john.add_lab(john_electrolyte_test)
-print(john)
+# john = Patient("John Doe", 30)
+# john_blood_test = BloodTest()
+# john_urine_test = UrineTest()   
+# john_electrolyte_test = ElectrolyteTest()
+# john_electrolyte_test.add_result( "Sodium (mmol/L)", 138)
+# john_urine_test.add_result("Color", "Pale Yellow")
+# john_urine_test.add_result("Appearance", "Clear")
+# john_blood_test.add_result("Hemoglobin (g/dL)", 15.5)
+# john_blood_test.add_result("White Blood Cells (thousand/uL)", 7.2)
+# john.add_lab(john_blood_test)
+# john.add_lab(john_urine_test)
+# john.add_lab(john_electrolyte_test)
+# print(john)
 
-labs = john.get_labs()
+# labs = john.get_labs()
 
     
-# patients = [""]*3
-# for i in range(len(patients)):
-#     patient_name = input("Add patient name\n")
-#     age = int(input("Enter patient age: \n"))  
-#     patients[i] =Patient(patient_name, age)
-#     print(f"Patient added: \n name :{patients[i].name}\n age {patients[i].age}")
+patients = [""]*3
+for i in range(len(patients)):
+    patient_name = input("Add patient name\n")
+    age = int(input("Enter patient age: \n"))  
+    patients[i] =Patient(patient_name, age)
+    print(f"Patient added: \n name :{patients[i].name}\n age {patients[i].age}")
 

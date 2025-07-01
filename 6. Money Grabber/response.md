@@ -1,0 +1,3 @@
+buy 0.4, sell 0.8
+
+Reasoning: The Technicals show XAU/USD (gold) in a downward trend (peaking at $3372.76, currently trading at $3357.59–$3361.83), while the sentiment from the news is strongly bearish on gold ("Gold Sells Off as Risk Appetite Hits Fever Pitch — Stocks Soar to Record Highs"). High volumes (4433 and 3527) in recent bearish candles reflect selling pressure. The marginal price rebound ($3361.83) in the final data point adds some uncertainty, but the overwhelming sentiment and technical context favor a higher probability for sell. The moderate buy score (0.4) reflects minor pullbacks but does not override the bearish narrative.

@@ -3,8 +3,8 @@ import subprocess
 import time
 import os
 
-SERVER_IP = "localhost"  
-PORT = 4200
+SERVER_IP = "129.150.59.67"  
+PORT = 80
 
 current_dir = os.getcwd()  # Start in the default directory
 

@@ -4,7 +4,7 @@ import queue
 import os
 
 host = "0.0.0.0"
-port = 4200
+port = 80
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((host, port))

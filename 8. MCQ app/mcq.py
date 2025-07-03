@@ -42,97 +42,118 @@ while True:
     except ValueError:
         print("Invalid input. Please enter a number.")
 
-# Randomly select unique questions
-selected_indices = random.sample(valid_indices, number_of_questions)
-passed = 0
-streak = 0
-failed = []
+def ask_questions():
+    passed = 0
+    streak = 0
+    highest_streak = 0
+    failed = []
+    try:
+        while True:
+            try:
+                selected_indices = random.sample(valid_indices, number_of_questions)
+                break
+            except IndexError:
+                print("Index out of bounds error. Retrying selection...")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        exit()
 
-for idx in selected_indices:
-    row = df.iloc[idx]
-    question = row.Question
-    choices = {
-        'A': row["Option A"],
-        'B': row["Option B"],
-        'C': row["Option C"],
-        'D': row["Option D"]
-    }
-    ans = row["Correct Answer"]
+    try:
+        for idx in selected_indices:
+            row = df.iloc[idx]
+            question = row.Question
+            choices = {
+                'A': row["Option A"],
+                'B': row["Option B"],
+                'C': row["Option C"],
+                'D': row["Option D"]
+            }
+            ans = row["Correct Answer"]
 
-    print(f"\n{question}")
-    for letter, option in choices.items():
-        print(f"{letter}: {option}")
+            print(f"\n{question}")
+            for letter, option in choices.items():
+                print(f"{letter}: {option}")
 
-    while True:
-        user_letter = input("What's your answer? (A/B/C/D)\nType delete to delete this question\n ").upper().strip()
-        if user_letter == "DELETE":
-            df = df[df['Question'] != question]
-            df.to_csv("./csv/"+ folder+"/"+file, index=False)
-            print("Question deleted")
-            user_answer = 0
-            break
-        elif user_letter in choices:
-            user_answer = choices[user_letter]
-            break
-        print("Invalid choice. Please enter A, B, C, or D.")
+            while True:
+                user_letter = input("What's your answer? (A/B/C/D)\nType delete to delete this question\n ").upper().strip()
+                if user_letter == "DELETE":
+                    df.drop(idx, inplace=True)
+                    df.to_csv("./csv/"+ folder+"/"+file, index=False)
+                    print("Question deleted")
+                    user_answer = 0
+                    break
+                elif user_letter in choices:
+                    user_answer = choices[user_letter]
+                    break
+                print("Invalid choice. Please enter A, B, C, or D.")
 
+            if user_answer == 0:
+                continue
+            elif user_answer == ans:
+                passed += 1
+                streak += 1
+                highest_streak = max(highest_streak, streak)
+                print(f"\n✅ Correct! (Streak: {'🔥' * streak})")
+            else:
+                failed.append({
+                    'question': question,
+                    'user_answer': user_answer,
+                    'correct_answer': ans,
+                    'choices': choices
+                })
+                streak = 0
+                print(f"\n❌ Incorrect. The correct answer is: {ans}")
 
-    if user_answer == 0:
-        continue
-    elif user_answer == ans:
-        passed += 1
-        streak += 1
-        print(f"\n✅ Correct! (Streak: {'🔥' * streak})")
-    else:
-        failed.append({
-            'question': question,
-            'user_answer': user_answer,
-            'correct_answer': ans,
-            'choices': choices
-        })
-        streak = 0
-        print(f"\n❌ Incorrect. The correct answer is: {ans}")
+    except KeyboardInterrupt:
+        print("\n\nQuiz interrupted by user.")
+        print(f"\n{'='*50}")
+        print(f"Points accumulated: {passed}")
+        print(f"Questions attempted: {passed + len(failed)}")
+        print(f"Highest streak: {highest_streak}")
+        exit()
 
-score = round(passed / number_of_questions * 100)
+    score = round(passed / number_of_questions * 100)
+    print(f"\n{'='*50}")
+    print(f"Final Score: {score}% ({passed}/{number_of_questions})")
+    print(f" <{'\033[32m■\033[0m' * passed*5}{'\033[31m■\033[0m' * (number_of_questions - passed)*5}>")
+    print(f"Highest streak: {highest_streak}")
 
-print(f"\n{'='*50}")
-print(f"Final Score: {score}% ({passed}/{number_of_questions})")
-print(f" <{'\033[32m■\033[0m' * passed*5}{'\033[31m■\033[0m' * (number_of_questions - passed)*5}>")
+    if passed == number_of_questions:
+        print("🌟 Are you sure you're not a genius? 🌟")
 
-if passed == number_of_questions:
-    print("🌟 Are you sure you're not a genius? 🌟")
+    # Explanation for failed questions
+    for f in failed:
+        print("\n" + "="*50)
+        print(f"Explanation for missed question:\n{f['question']}")
+        print(f"\nYour answer: \033[31m{f['user_answer']}\033[0m")
+        print(f"Correct answer: \033[32m{f['correct_answer']}\033[0m")
+        
+        # API request for explanation
+        prompt = (
+            "Explain why the correct answer is right and why the user's answer is wrong "
+            f"for this medical question: '{f['question']}'. "
+            f"Correct answer: {f['correct_answer']}. "
+            f"User's answer: {f['user_answer']}. "
+            "Provide a concise medical explanation in plain text only."
+        )
+        
+        response = requests.post(
+            url="https://openrouter.ai/api/v1/chat/completions",
+            headers={
+                "Authorization": api_key,
+                "Content-Type": "application/json"
+            },
+            data=json.dumps({
+                "model": "deepseek/deepseek-chat-v3-0324:free",
+                "messages": [{"role": "user", "content": prompt}]
+            })
+        )
+        
+        if response.status_code == 200:
+            explanation = response.json()['choices'][0]['message']['content']
+            print(f"\nExplanation:\n{explanation}")
+            cont = input("\nPress Enter to check next question\n")
+        else:
+            print(f"\nError getting explanation (Status {response.status_code})")
 
-# Explanation for failed questions
-for f in failed:
-    print("\n" + "="*50)
-    print(f"Explanation for missed question:\n{f['question']}")
-    print(f"\nYour answer: \033[31m{f['user_answer']}\033[0m")
-    print(f"Correct answer: \033[32m{f['correct_answer']}\033[0m")
-    
-    # API request for explanation
-    prompt = (
-        "Explain why the correct answer is right and why the user's answer is wrong "
-        f"for this medical question: '{f['question']}'. "
-        f"Correct answer: {f['correct_answer']}. "
-        f"User's answer: {f['user_answer']}. "
-        "Provide a concise medical explanation in plain text only."
-    )
-    
-    response = requests.post(
-        url="https://openrouter.ai/api/v1/chat/completions",
-        headers={
-            "Authorization": api_key,
-            "Content-Type": "application/json"
-        },
-        data=json.dumps({
-            "model": "deepseek/deepseek-chat-v3-0324:free",
-            "messages": [{"role": "user", "content": prompt}]
-        })
-    )
-    
-    if response.status_code == 200:
-        explanation = response.json()['choices'][0]['message']['content']
-        print(f"\nExplanation:\n{explanation}")
-        cont = input("\nPress Enter to check next question\n")
-    else:
-        print(f"\nError getting explanation (Status {response.status_code})")
+ask_questions()

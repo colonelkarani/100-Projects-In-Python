@@ -14,7 +14,7 @@ if not mt5.initialize():
 
 symbol = sys.argv[1]
 if len(sys.argv)>1:
-  rates = mt5.copy_rates_from_pos(symbol.upper(), mt5.TIMEFRAME_H1, 99, 100)
+  rates = mt5.copy_rates_from_pos(symbol.upper(), mt5.TIMEFRAME_H1, 1, 100)
   print(f"{rates[85:95]}")
   print("")
 

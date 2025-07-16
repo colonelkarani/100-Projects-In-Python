@@ -10,7 +10,7 @@ if not mt5.initialize():
     mt5.shutdown()
     exit()
 
-SYMBOL = "BTCUSD"
+SYMBOL = "XAUUSD"
 TIMEFRAME = mt5.TIMEFRAME_H1
 LOT_SIZE = 0.01
 SWING_WINDOW = 1
@@ -100,17 +100,45 @@ def detect_liquidity_grabs(df, swing_window=SWING_WINDOW, wick_body_ratio=WICK_B
                     break
     return liquidity_grabs
 
-def calculate_stop_loss(entry_price, trade_type, liquidity_grab_price, swing_price, buffer=BUFFER):
+def calculate_stop_loss(entry_price, trade_type, liquidity_grab_price, swing_price, buffer_pct=0.005, atr=None):
+    """
+    Calculate stop loss price for long or short trades using swing points, liquidity grab, and a buffer.
+    
+    Parameters:
+    - entry_price (float): The price at which the trade was entered.
+    - trade_type (str): 'long' or 'short'.
+    - liquidity_grab_price (float): Price level representing liquidity grab.
+    - swing_price (float): Recent swing low (for longs) or swing high (for shorts).
+    - buffer_pct (float): Buffer as a percentage of entry price (default 0.5%).
+    - atr (float or None): Average True Range for dynamic buffer adjustment (optional).
+    
+    Returns:
+    - stop_loss (float): Calculated stop loss price.
+    """
+    if trade_type.lower() not in ['long', 'short']:
+        raise ValueError("trade_type must be 'long' or 'short'")
+
+    # Determine buffer amount in price terms
+    if atr is not None:
+        buffer = atr * buffer_pct  # buffer scaled by volatility
+    else:
+        buffer = entry_price * buffer_pct  # fixed percentage buffer
+
     if trade_type.lower() == 'long':
-        stop_loss = min(liquidity_grab_price, swing_price) - buffer
+        # Stop loss below the lower of liquidity grab or swing low minus buffer
+        base_stop = min(liquidity_grab_price, swing_price)
+        stop_loss = base_stop - buffer
+        # Ensure stop loss is below entry price
         if stop_loss >= entry_price:
             stop_loss = entry_price - buffer
-    elif trade_type.lower() == 'short':
-        stop_loss = max(liquidity_grab_price, swing_price) + buffer
+    else:  # short
+        # Stop loss above the higher of liquidity grab or swing high plus buffer
+        base_stop = max(liquidity_grab_price, swing_price)
+        stop_loss = base_stop + buffer
+        # Ensure stop loss is above entry price
         if stop_loss <= entry_price:
             stop_loss = entry_price + buffer
-    else:
-        raise ValueError("trade_type must be 'long' or 'short'")
+
     return stop_loss
 
 def calculate_take_profit(entry_price, stop_loss_price, trade_type, risk_reward_ratio=RISK_REWARD_RATIO):

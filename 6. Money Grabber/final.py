@@ -10,8 +10,8 @@ if not mt5.initialize():
     mt5.shutdown()
     exit()
 
-SYMBOL = "XAUUSD"
-TIMEFRAME = mt5.TIMEFRAME_H1
+SYMBOL = "EURJPY"
+TIMEFRAME = mt5.TIMEFRAME_M10
 LOT_SIZE = 0.01
 SWING_WINDOW = 1
 WICK_BODY_RATIO = 1.5

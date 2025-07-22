@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # Parameters (adjust as needed)
-SYMBOL = "XAUUSD"
+SYMBOL = "EURUSD"
 TIMEFRAME = mt5.TIMEFRAME_H1
 LOT_SIZE = 0.01
 SWING_WINDOW = 1

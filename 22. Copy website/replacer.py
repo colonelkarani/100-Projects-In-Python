@@ -1,5 +1,13 @@
 import os
 import argparse
+TEXT_EXTS = {
+    '.html', '.htm', '.php', '.js', '.css', '.txt', '.md', '.json', '.xml',
+    '.twig', '.phtml', '.inc', '.po', '.pot',  # WP common
+    # Skip binaries disguised as .html:
+    # But check will handle via try/except already
+}
+
+
 
 def replace_in_text_case_insensitive(text, old, new):
     """
@@ -32,6 +40,13 @@ def process_file(path, old, new):
     Returns number of replacements, 0 if none or on error.
     """
     try:
+        # Quick binary check first
+        with open(path, "rb") as f:
+            chunk = f.read(1024)
+            if b'\x00' in chunk or b'\xff' in chunk[:66]:  # Null bytes or FF at start/pos66
+                print(f"[SKIP BINARY] {os.path.basename(path)}")
+                return 0
+        # Then text read
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
     except Exception as e:
@@ -91,10 +106,13 @@ def walk_and_replace(root_dir, old, new):
         for filename in filenames:
             file_path = os.path.join(current_root, filename)
 
-            # 1. Replace in file content
-            content_replaced = process_file(file_path, old, new)
+            # 1. Replace in file content ONLY for text files
+            if os.path.splitext(filename)[1].lower() in TEXT_EXTS:
+                content_replaced = process_file(file_path, old, new)
+            else:
+                content_replaced = 0  # Skip binary files like images
 
-            # 2. Rename file if needed
+            # 2. Rename file if needed (always, even binaries)
             new_file_path, renamed, name_replaced = rename_case_insensitive(
                 file_path, old, new
             )
@@ -111,7 +129,7 @@ def walk_and_replace(root_dir, old, new):
             total_content_replacements += content_replaced
             total_name_replacements += name_replaced
 
-        # Then process directory names (including current_root’s children)
+        # Then process directory names
         for dirname in dirnames:
             dir_path = os.path.join(current_root, dirname)
             new_dir_path, renamed, name_replaced = rename_case_insensitive(
